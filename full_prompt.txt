@@ -1,0 +1,84 @@
+Build a complete, premium single-page local business website WITH an integrated booking system as ONE single index.html file. One file. Everything inside it. No separate pages. No external JS libraries except Tailwind CDN and Lucide Icons CDN.
+
+The website has two views toggled by JavaScript:
+  - Home view  -> id="page-home"
+  - Booking view -> id="page-book"
+
+Switching is done with this function (implement it exactly):
+  function showPage(id) {
+    document.querySelectorAll('.page-view').forEach(p => p.style.display = 'none');
+    document.getElementById('page-' + id).style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+"Book Now"/"Book Appointment"/"Book This" -> all call showPage('book'). "Back to Home" -> showPage('home'). No href="#". No alert(). No page reload. No separate HTML files.
+
+DESIGN BENCHMARK: Awwwards finalist for a local business. Apple.com (massive type, breathing room), Framer.com (scroll storytelling, word reveals), Linear.app (8pt grid, micro-animations), Vercel.com (glass nav, glow cards), Stripe.com (gradient blobs, layered depth, stats).
+
+FONTS (Google Fonts): Heading Cormorant Garamond (ital,wght 300;400;600), Body DM Sans (300;400;500;700). https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;700&display=swap . NEVER Arial/Helvetica/Times/system-ui as heading.
+
+TYPE SCALE (clamp): h1 clamp(44px,7vw,92px) letter-spacing -0.03em line-height 1.05; h2 clamp(30px,4.5vw,58px) -0.02em 1.1; h3 clamp(20px,2.5vw,28px) -0.01em 1.2; body clamp(15px,1.4vw,18px) 1.75; label 12px letter-spacing 0.1em UPPERCASE 600. Negative tracking on h1/h2 is NON-NEGOTIABLE.
+
+COLORS (Med Spa / Luxury): --bg #fff8f4; --surface #fdf2ec; --primary #8a4853; --accent #56642b (CTA buttons only); --text #1f1b17; --muted #7a6e6a; --border rgba(138,72,83,0.12). 60% bg / 30% primary / 10% accent.
+
+SPACING strict 8pt grid: section padding 120px desktop -> 64px mobile; container max-width 1200px centered, 80px side padding -> 20px mobile; card padding 40-48px; card radius 16px; button radius 8px; gaps multiples of 8.
+
+SHADOWS silk: card 0 4px 24px rgba(138,72,83,0.06); card hover 0 20px 60px rgba(138,72,83,0.13); navbar 0 1px 40px rgba(0,0,0,0.06). Never opacity >0.25.
+
+ICONS Lucide only, stroke-width 1.5 always. CDN <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>, init lucide.createIcons() at end of body. Use: calendar, clock, map-pin, phone, mail, star, sparkles, arrow-right, check-circle, chevron-down, menu, x, user. 16px nav, 20px inline, 28px cards, 40px hero.
+
+ANIMATIONS — implement ALL, working:
+1. HERO WORD-BY-WORD REVEAL: on DOMContentLoaded split #page-home h1 into word spans, each opacity 0->1 + translateY(20px)->0, stagger 0.08s/word, 0.5s ease-out.
+   function splitWords(el){const words=el.textContent.trim().split(' ');el.innerHTML=words.map((w,i)=>`<span style="display:inline-block;opacity:0;transform:translateY(20px);transition:opacity .5s ease ${i*0.08}s,transform .5s ease ${i*0.08}s">${w}&nbsp;</span>`).join('');requestAnimationFrame(()=>el.querySelectorAll('span').forEach(s=>{s.style.opacity='1';s.style.transform='translateY(0)'}));}
+2. HERO STAGGERED ENTRANCE via @keyframes fadeUp (opacity0 translateY28->0): .hero-title 0.8s, .hero-tagline 0.8s .25s, .hero-buttons 0.8s .45s, .hero-badge 0.6s .1s.
+3. SCROLL REVEAL: class="reveal" on every section heading, card, about text, review card, FAQ item; .reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}.reveal.visible{opacity:1;transform:translateY(0)} with IntersectionObserver threshold 0.12 add 'visible' then unobserve. .reveal-group children stagger nth-child delay 0.1s.
+4. NAVBAR GLASSMORPHISM on scroll>40: nav transparent -> nav.scrolled background rgba(255,248,244,0.88) backdrop-filter blur(20px) + border + shadow, transition .4s. window scroll toggles 'scrolled'.
+5. CARD HOVER LIFT: .card transition transform .25s, box-shadow .25s; :hover translateY(-6px) + glow shadow; optional ::before gradient glow opacity 0->0.35 on hover.
+6. BUTTON HOVER SCALE: .btn-primary :hover scale(1.04) + shadow.
+7. HERO BACKGROUND BREATHING (no photo): @keyframes breathe background-position shift; .hero-gradient-bg linear-gradient(135deg,var(--bg),var(--surface),var(--bg),color-mix(in srgb,var(--primary) 8%,var(--bg))) background-size 400% animation breathe 12s infinite.
+8. STAT COUNTER count-up ease-out cubic when stats enter viewport.
+9. FAQ ACCORDION: .faq-answer max-height 0 transition .4s; .faq-item.open .faq-answer max-height 500px; arrow rotate 180. toggleFaq(el) opens clicked, closes others.
+10. NAV LINK UNDERLINE: .nav-link::after width 0->100% on hover.
+11. GRADIENT BLOBS: absolute, blur(90px), opacity 0.12, primary + accent.
+12. HERO SHIMMER on ONE h1 word: @keyframes shimmer background-position; .shimmer gradient text-fill transparent, 3.5s linear.
+ALWAYS @media (prefers-reduced-motion: reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}.
+
+HOME SECTIONS in this exact order:
+1 STICKY NAVBAR: logo (heading font, showPage('home')) + links Services/Gallery/Reviews/FAQ (.nav-link smooth-scroll) + "Book Now" accent button -> showPage('book'); mobile hamburger -> full-screen overlay (toggleMobileMenu()); transparent -> glass on scroll.
+2 HERO: min-height 100vh flex center; eyebrow badge with star rating; H1 huge with word-split + .shimmer on one word; tagline; two CTAs filled "Book Appointment"->showPage('book') + ghost "View Services" scroll; NO photo -> .hero-gradient-bg breathing + blobs. NO AI images.
+3 ABOUT: label, h2, 2-3 sentence bio, one stat callout, scroll reveal.
+4 SERVICES + PRICING: label + h2; grid 3 col desktop/2 tablet/1 mobile; ONE CARD PER SERVICE from data (icon 28px, exact name h3, short desc, exact price, duration, "Book This" -> showPage('book')); card + reveal classes, .reveal-group stagger.
+5 REVIEWS: overall badge "[rating] · [count] Reviews"; show ALL reviews each as a card (stars, italic text, bold name, date); exact names + text; grid; scroll reveal.
+6 LOCATION + CONTACT: two-col (map left, info right); Google Maps iframe src="https://maps.google.com/maps?q=ENCODED+ADDRESS&output=embed" + "Open in Google Maps" link; address, phone tel:, hours by day; buttons Directions/Call. NEVER maps API key.
+7 FAQ: 4-6 niche questions, accordion toggleFaq, one open at a time, scroll reveal.
+8 FOOTER: business name heading font + tagline, quick links, © current year business name.
+
+BOOKING PAGE id="page-book" same file, full-page view (not modal), same colors/fonts:
+HEADER: "Back to Home"->showPage('home'); business name; "Book Your Appointment" h1; star badge.
+STEP 1 SELECT SERVICES: all services as selectable cards (exact name, price, duration); click toggles selected = accent border + tint; selectedServices=[] multi-select; updateSummary() on toggle; inline error space.
+STEP 2 SELECT DATE: pure-JS calendar, month/year header with prev/next nav, correct weekday offsets, past dates greyed cursor-not-allowed pointer-events none, selected highlighted accent; renderCalendar(year,month), prevMonth(), nextMonth() handle year change.
+STEP 3 SELECT TIME: time-slot buttons grouped Morning(9,10,11 AM) / Afternoon(12,1,2,3 PM) / Evening(4,5 PM); one selectable; selected filled accent; selectTime updates summary.
+STEP 4 YOUR INFORMATION: Full Name id="input-name" required; Phone id="input-phone" type tel required; Email id="input-email" type email required; Special Requests id="input-notes" textarea optional.
+LIVE BOOKING SUMMARY: sticky sidebar desktop; services + prices, total duration, subtotal, tax line, TOTAL big bold; selected date/time ("—" if unset); default "No services selected · $0.00".
+CONFIRM BUTTON "Confirm Booking — $[live total]" onclick confirmBooking(): if no service show inline error under step1; if no date error under calendar; if no time error under slots; if name/phone/email empty red border + inline error; if all valid hide form -> confirmation screen. NEVER alert().
+CONFIRMATION SCREEN: "You're all set, [firstName]! 🎉" (actual first name); summary card services/date/time/total; "Add to Google Calendar" link https://calendar.google.com/calendar/render?action=TEMPLATE&text=Appointment+at+[Business]&dates=[YYYYMMDD]T[HH]0000/[YYYYMMDD]T[HH+1]0000&details=...&location=[address]; "For changes call [phone]"; "Book Another" -> resetBooking().
+
+ALL JS FUNCTIONS required (implement every one): showPage(id); toggleMobileMenu(); scrollToSection(id); splitWords(el); initReveal(); animateCounter(el,target); let selectedServices=[],selectedDate=null,selectedTime=null,currentYear,currentMonth; toggleService(el,name,price,duration); updateSummary(); selectDate(el,dateStr); selectTime(el,timeStr); renderCalendar(year,month); prevMonth(); nextMonth(); confirmBooking(); resetBooking(); toggleFaq(el); openLightbox(src,alt); closeLightbox(); DOMContentLoaded -> splitWords(#page-home h1), initReveal(), renderCalendar(now), lucide.createIcons().
+
+IMAGES NON-NEGOTIABLE: use ONLY photo URLs provided (none here). If no URL -> styled placeholder div background var(--surface) reading "PHOTO HERE". NEVER lh3.googleusercontent.com/aida-public. NEVER gstatic.com/labs-code. NEVER unsplash/picsum/placeholder services. NEVER invent an image URL. Do NOT generate any AI images.
+
+DATA — use EXACTLY, invent nothing, omit any missing field's UI:
+BUSINESS NAME: The Beauty Spot
+BUSINESS TYPE: Day Spa
+TAGLINE: Where calm becomes ritual
+ADDRESS: 10420 N La Cañada Dr #120, Oro Valley, AZ 85737 (Floor 1, Mercado at Cañada Hills)
+PHONE: +1 520-595-8565
+HOURS: Mon-Fri 9 AM-7 PM; Sat 9 AM-5 PM; Sun closed
+GOOGLE RATING: 5.0
+TOTAL REVIEWS: 9
+SERVICES: 1 Signature Facial $95 60min; 2 Deep Tissue Massage $110 60min; 3 Hot Stone Massage $130 75min; 4 Express Glow Facial $60 30min; 5 Weeknight Yoga Class $20 60min; 6 Brow & Lash Tint $45 30min
+REVIEWS:
+1 Taylor U. 5/5 "This place is much needed in Oro Valley! It is beautiful inside and very calming. I go here only for the weeknight yoga classes with Savannah, who is an excellent teacher."
+2 Elle 5/5 "Beyond amazing! I was greeted with enthusiastic smiles as soon as I entered the fresh and cheerful spa. My esthetician, Sami, was so thorough with a relaxing kind touch."
+3 Maha S 5/5 "This place IS relaxation!! I felt so welcomed and treated like a star at this beautiful spa. The decor is stunning and the ambiance very welcoming. I got an hour body massage which left me feeling incredibly relaxed."
+
+FINAL OUTPUT RULES: single index.html; Lucide + Google Fonts in head; all JS at bottom before </body>; mobile-first works at 375px; every button real onclick; booking is full-page not modal; calendar navigates months correctly; summary updates live; validation inline not alert(); confirmation uses actual first name. No two files, no external JS libs, no invented/stock/AI images, no href="#", no letter-spacing:0 on h1/h2.

@@ -1,0 +1,43 @@
+name: stitch-autopilot
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"     # every 15 min (GitHub may delay under load)
+  workflow_dispatch: {}         # also run manually from the Actions tab
+
+concurrency:
+  group: autopilot              # never run two passes at once
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: pip install -r requirements.txt
+
+      - name: Write secret files
+        run: |
+          printf '%s' "${STITCH_KEY}"     > .stitch_key
+          printf '%s' "${NETLIFY_TOKEN}"  > .netlify_token
+          printf '%s' "${GCP_SA_JSON}"    > .gcp_sa.json
+        env:
+          STITCH_KEY:    ${{ secrets.STITCH_KEY }}
+          NETLIFY_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
+          GCP_SA_JSON:   ${{ secrets.GCP_SA_JSON }}
+
+      - name: Run one pass
+        env:
+          SHEET_ID:    ${{ secrets.SHEET_ID }}
+          SHEET_TAB:   Sheet1
+          DAILY_CAP:   "44"
+          PER_RUN_CAP: "8"
+          DEVICE:      DESKTOP
+        run: python autopilot.py --once

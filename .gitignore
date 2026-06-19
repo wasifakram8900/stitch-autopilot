@@ -1,0 +1,9 @@
+venv/
+.stitch_key
+.netlify_token
+.gcp_sa.json
+.env
+.state.json
+__pycache__/
+out/
+*.pyc
