@@ -10,6 +10,7 @@ Run `python design_dna.py` to print 3 sample DNAs and confirm they differ.
 """
 import hashlib
 import datetime
+import niches
 
 
 # ── FONT PAIRINGS (heading / body, real Google Fonts) ──────────────────────────
@@ -128,28 +129,8 @@ def _idx(seed, salt, n):
     return int(h, 16) % n
 
 
-# niche -> preferred font moods / palette schemes / layout names. Keeps picks APPROPRIATE
-# (gym≠spa) while still varied (seed rotates within the matching tier).
-NICHE_PREFS = {
-    "gym": {"font": ["bold", "industrial", "sport", "tech", "loud", "display"], "scheme": ["dark"],
-            "layout": ["centered-massive-type", "scroll-snap-sections", "full-bleed-gradient", "bento-grid"]},
-    "dental": {"font": ["clean", "modern", "calm", "editorial"], "scheme": ["light"],
-               "layout": ["split-hero", "centered-massive-type", "magazine-editorial"]},
-    "spa": {"font": ["editorial", "elegant", "calm", "light"], "scheme": ["light"],
-            "layout": ["magazine-editorial", "centered-massive-type", "asymmetric-offset"]},
-    "salon": {"font": ["elegant", "fashion", "editorial"], "scheme": ["light"],
-              "layout": ["magazine-editorial", "asymmetric-offset", "bento-grid"]},
-    "coffee": {"font": ["editorial", "warm", "modern", "elegant"], "scheme": ["light"],
-               "layout": ["magazine-editorial", "split-hero", "asymmetric-offset"]},
-    "restaurant": {"font": ["editorial", "elegant", "warm"], "scheme": ["light", "dark"],
-                   "layout": ["magazine-editorial", "full-bleed-gradient"]},
-    "law": {"font": ["classic", "editorial", "clean"], "scheme": ["light"],
-            "layout": ["magazine-editorial", "split-hero"]},
-    "tech": {"font": ["tech", "modern", "geometric", "bold"], "scheme": ["dark", "light"],
-             "layout": ["bento-grid", "split-hero", "full-bleed-gradient", "scroll-snap-sections"]},
-}
-_ALIAS = {"fitness": "gym", "medical": "dental", "clinic": "dental", "beauty": "spa",
-          "cafe": "coffee", "legal": "law", "saas": "tech", "agency": "tech"}
+# niche design prefs come from the central registry (niches.py) — one source of truth.
+NICHE_PREFS = niches.DESIGN_PREFS
 
 
 def _wpick(items, seed, salt, key_fn, prefs, extra):
@@ -166,8 +147,7 @@ def pick(business_name, date=None, niche=None, extra_tags=None):
     """Deterministic, niche-weighted design system for this business+date."""
     date = date or datetime.date.today().isoformat()
     seed = f"{business_name}::{date}::{niche or ''}"
-    key = (niche or "").lower().split()[0] if niche else ""
-    key = _ALIAS.get(key, key)
+    key = niches.resolve(niche)
     p = NICHE_PREFS.get(key, {})
     extra = extra_tags or []
     return {

@@ -6,6 +6,7 @@ pick(business, seed) -> {eyebrow, headline, cta, about, faq:[(q,a)...]}
 brief_compiler injects this as a COPY block ("use these exact words").
 """
 import hashlib
+import niches
 
 DEFAULT = {
     "eyebrow": ["TRUSTED BY LOCALS", "BOOK IN UNDER A MINUTE", "REAL SERVICE, REAL RESULTS"],
@@ -18,38 +19,7 @@ DEFAULT = {
             ("How do I reach you?", "Call or email us using the details below; we reply fast.")],
 }
 
-NICHE_COPY = {
-    "gym": {
-        "eyebrow": ["RESULTS WITHOUT GUESSWORK", "STRENGTH · CONDITIONING · COMMUNITY", "COACHED, NOT CROWDED"],
-        "headlines": ["Get strong. Stay strong.", "Train with a plan that actually works.", "Your strongest self starts here."],
-        "cta": "Book a Free Session",
-        "about": "We coach busy people to move better and get measurably stronger — no fads, no guesswork. Just programmed training that fits your life and coaches who actually watch your reps.",
-        "faq": [("Do I need experience?", "No. We start with an assessment and meet you exactly at your level."),
-                ("How long are sessions?", "45–60 minutes, built to fit a workday."),
-                ("Can I try before I commit?", "Yes — your first session is free, no pressure."),
-                ("Do you help with nutrition?", "Optional macro-based coaching is available alongside training.")],
-    },
-    "dental": {
-        "eyebrow": ["GENTLE · MODERN · FAMILY-FRIENDLY", "NEW PATIENTS WELCOME", "DENTISTRY WITHOUT THE DREAD"],
-        "headlines": ["A dentist you'll actually look forward to.", "Healthy smiles, gently done.", "Modern care for your whole family."],
-        "cta": "Book Appointment",
-        "about": "We blend gentle, modern dentistry with honest, plain-English care. From routine cleanings to cosmetic work, we'll keep you comfortable and clearly informed at every step.",
-        "faq": [("Do you take my insurance?", "We work with most major plans — ask us and we'll verify your coverage."),
-                ("Are you accepting new patients?", "Yes, and new-patient visits are easy to book online."),
-                ("Does it hurt?", "We prioritize comfort with gentle techniques and clear communication."),
-                ("Do you offer emergency visits?", "Yes — same-day care for pain or breaks when available.")],
-    },
-    "coffee": {
-        "eyebrow": ["SMALL-BATCH · LOCALLY ROASTED", "POURED WITH CARE", "YOUR THIRD PLACE"],
-        "headlines": ["Coffee worth slowing down for.", "Roasted with intent, poured with care.", "Your new favorite morning."],
-        "cta": "Order Online",
-        "about": "We roast in small batches and brew every cup to order. Whether you're grabbing a pour-over on the way to work or settling in for the afternoon, you're always welcome here.",
-        "faq": [("Do you sell beans to take home?", "Yes — fresh-roasted, whole or ground to your preference."),
-                ("Can I order ahead?", "Absolutely, use the order button up top to skip the line."),
-                ("Do you cater events?", "Yes — our coffee cart and barista can come to you."),
-                ("Are you laptop-friendly?", "Plenty of seating and outlets — stay as long as you like.")],
-    },
-}
+NICHE_COPY = niches.COPY   # central registry — 40+ local-business niches
 
 
 def _i(seed, salt, n):
@@ -57,8 +27,7 @@ def _i(seed, salt, n):
 
 
 def pick(b, seed=""):
-    niche = (b.get("niche") or "").lower().split()[0] if b.get("niche") else ""
-    c = NICHE_COPY.get(niche, DEFAULT)
+    c = NICHE_COPY.get(niches.resolve(b.get("niche")), DEFAULT)
     seed = seed or b.get("name", "")
     return {
         "eyebrow": c["eyebrow"][_i(seed, "eyebrow", len(c["eyebrow"]))],

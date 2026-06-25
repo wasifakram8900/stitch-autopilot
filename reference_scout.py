@@ -7,12 +7,11 @@ Tagging: honors an optional comment  <!-- niche: dental, gym; style: bold, dark 
 otherwise infers tags by scanning the content.
 """
 import os, re, glob, hashlib
+import niches
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
-NICHE_WORDS = ["gym", "fitness", "dental", "medical", "clinic", "spa", "salon", "beauty",
-               "coffee", "cafe", "restaurant", "food", "law", "legal", "tech", "saas",
-               "real estate", "barber", "yoga", "studio", "agency", "auto", "pet"]
+NICHE_WORDS = niches.NICHE_WORDS   # central registry keywords (40+ niches)
 STYLE_WORDS = ["bold", "dark", "minimal", "editorial", "elegant", "luxury", "playful",
                "kinetic", "brutalist", "glass", "glassmorphism", "gradient", "neon", "glow",
                "modern", "clean", "retro", "vibrant", "premium", "industrial", "calm", "warm"]

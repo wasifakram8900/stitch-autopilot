@@ -15,6 +15,7 @@ seed = hash(name+date) → `bundle()` picks a COHERENT, niche-weighted set per s
 Run `python asset_lib.py` to see a composed bundle + the QA markers it guarantees.
 """
 import hashlib, json, os, glob
+import niches
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
@@ -117,19 +118,8 @@ EFFECTS = {
     ],
 }
 
-# niche → preferred tags (bias picks so a gym ≠ a spa). Falls back to any if no match.
-NICHE_BIAS = {
-    "gym": ["bold", "dark", "kinetic", "interactive"],
-    "fitness": ["bold", "dark", "kinetic", "interactive"],
-    "dental": ["calm", "minimal", "essential", "premium"],
-    "medical": ["calm", "minimal", "essential"],
-    "spa": ["calm", "soft", "premium"],
-    "salon": ["premium", "soft", "headline"],
-    "coffee": ["soft", "editorial", "premium"],
-    "restaurant": ["editorial", "premium", "headline"],
-    "tech": ["tech", "modern", "bold"],
-    "law": ["minimal", "editorial", "essential"],
-}
+# niche effect bias comes from the central registry (niches.py) — bias picks so gym ≠ spa.
+NICHE_BIAS = niches.EFFECT_BIAS
 
 # how many to pick per category for one site
 BUNDLE_SHAPE = {"gradient": 1, "background": 1, "cursor": 1, "glass": 1, "glow": 1, "animation": 4, "hover": 2}
@@ -171,7 +161,7 @@ def load_external(folder="assets"):
 
 def bundle(name, date="", niche=None):
     seed = f"{name}::{date}::{niche or ''}"
-    bias = NICHE_BIAS.get((niche or "").lower().split()[0] if niche else "", [])
+    bias = NICHE_BIAS.get(niches.resolve(niche), [])
     out = {}
     for cat, k in BUNDLE_SHAPE.items():
         force = ESSENTIAL if cat == "animation" else ()
