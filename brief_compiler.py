@@ -10,6 +10,8 @@ Returns {prompt, ds, bundle, markers} — markers feed the technical-team QA gat
 import datetime
 import design_dna
 import asset_lib
+import copywriter
+import reference_scout
 
 asset_lib.load_external()   # merge bulk-imported packs once
 
@@ -102,20 +104,34 @@ def _data_block(b):
     return "\n".join(L)
 
 
-def build_prompt(b, date=None, salt=""):
-    """salt lets a regen attempt re-seed the DNA so a failed look changes on retry."""
+def _fix_block(fixes):
+    if not fixes:
+        return ""
+    return ("MUST FIX — the previous attempt FAILED automated QA. Address ALL of these, they are "
+            "mandatory:\n" + "\n".join(f"- {f}" for f in fixes))
+
+
+def build_prompt(b, date=None, salt="", fixes=None):
+    """salt re-seeds the DNA on a regen so a failed look changes. fixes = QA feedback to force-correct."""
     date = (date or datetime.date.today().isoformat()) + (f"#{salt}" if salt else "")
     niche = b.get("niche")
-    ds = design_dna.pick(b["name"], date=date, niche=niche)
+    seed_name = b["name"] + (f"#{salt}" if salt else "")
+    # designer team: scout references -> style bias -> niche-weighted look + niche effects + copy
+    refs = reference_scout.select(niche, seed=seed_name)
+    bias = reference_scout.style_bias(refs)
+    ds = design_dna.pick(b["name"], date=date, niche=niche, extra_tags=bias)
     bundle = asset_lib.bundle(b["name"], date=date, niche=niche)
-    prompt = "\n\n".join([
-        SKELETON,
-        design_dna.to_prompt_block(ds),
-        asset_lib.compose_block(bundle),
-        _data_block(b),
-    ])
+    copy = copywriter.pick(b, seed=seed_name)
+    parts = [SKELETON]
+    if fixes:
+        parts.append(_fix_block(fixes))
+    if refs:
+        parts.append(reference_scout.to_block(refs))
+    parts += [design_dna.to_prompt_block(ds), asset_lib.compose_block(bundle),
+              copywriter.to_block(copy, b), _data_block(b)]
     markers = list(dict.fromkeys(asset_lib.markers(bundle) + CORE_FUNCS))
-    return {"prompt": prompt, "ds": ds, "bundle": bundle, "markers": markers}
+    return {"prompt": "\n\n".join(parts), "ds": ds, "bundle": bundle,
+            "markers": markers, "copy": copy, "refs": [r["name"] for r in refs]}
 
 
 if __name__ == "__main__":

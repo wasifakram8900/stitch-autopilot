@@ -128,20 +128,57 @@ def _idx(seed, salt, n):
     return int(h, 16) % n
 
 
-def pick(business_name, date=None, niche=None):
-    """Deterministic design system for this business+date. Independent pick per dimension."""
+# niche -> preferred font moods / palette schemes / layout names. Keeps picks APPROPRIATE
+# (gym≠spa) while still varied (seed rotates within the matching tier).
+NICHE_PREFS = {
+    "gym": {"font": ["bold", "industrial", "sport", "tech", "loud", "display"], "scheme": ["dark"],
+            "layout": ["centered-massive-type", "scroll-snap-sections", "full-bleed-gradient", "bento-grid"]},
+    "dental": {"font": ["clean", "modern", "calm", "editorial"], "scheme": ["light"],
+               "layout": ["split-hero", "centered-massive-type", "magazine-editorial"]},
+    "spa": {"font": ["editorial", "elegant", "calm", "light"], "scheme": ["light"],
+            "layout": ["magazine-editorial", "centered-massive-type", "asymmetric-offset"]},
+    "salon": {"font": ["elegant", "fashion", "editorial"], "scheme": ["light"],
+              "layout": ["magazine-editorial", "asymmetric-offset", "bento-grid"]},
+    "coffee": {"font": ["editorial", "warm", "modern", "elegant"], "scheme": ["light"],
+               "layout": ["magazine-editorial", "split-hero", "asymmetric-offset"]},
+    "restaurant": {"font": ["editorial", "elegant", "warm"], "scheme": ["light", "dark"],
+                   "layout": ["magazine-editorial", "full-bleed-gradient"]},
+    "law": {"font": ["classic", "editorial", "clean"], "scheme": ["light"],
+            "layout": ["magazine-editorial", "split-hero"]},
+    "tech": {"font": ["tech", "modern", "geometric", "bold"], "scheme": ["dark", "light"],
+             "layout": ["bento-grid", "split-hero", "full-bleed-gradient", "scroll-snap-sections"]},
+}
+_ALIAS = {"fitness": "gym", "medical": "dental", "clinic": "dental", "beauty": "spa",
+          "cafe": "coffee", "legal": "law", "saas": "tech", "agency": "tech"}
+
+
+def _wpick(items, seed, salt, key_fn, prefs, extra):
+    """Pick from items, preferring those whose text matches niche prefs + extra style bias.
+    Falls back to pure seed pick when nothing matches (no niche) → variety preserved."""
+    want = [w.lower() for w in (list(prefs) + list(extra))]
+    scored = [(sum(1 for w in want if w in key_fn(it).lower()), it) for it in items]
+    mx = max(s for s, _ in scored)
+    tier = [it for s, it in scored if s == mx]
+    return tier[_idx(seed, salt, len(tier))]
+
+
+def pick(business_name, date=None, niche=None, extra_tags=None):
+    """Deterministic, niche-weighted design system for this business+date."""
     date = date or datetime.date.today().isoformat()
     seed = f"{business_name}::{date}::{niche or ''}"
-    ds = {
+    key = (niche or "").lower().split()[0] if niche else ""
+    key = _ALIAS.get(key, key)
+    p = NICHE_PREFS.get(key, {})
+    extra = extra_tags or []
+    return {
         "seed": seed,
-        "font": FONTS[_idx(seed, "font", len(FONTS))],
-        "palette": PALETTES[_idx(seed, "palette", len(PALETTES))],
-        "layout": LAYOUTS[_idx(seed, "layout", len(LAYOUTS))],
+        "font": _wpick(FONTS, seed, "font", lambda f: f.get("mood", ""), p.get("font", []), extra),
+        "palette": _wpick(PALETTES, seed, "palette", lambda x: x["name"] + " " + x["scheme"], p.get("scheme", []), extra),
+        "layout": _wpick(LAYOUTS, seed, "layout", lambda l: l["name"], p.get("layout", []), extra),
         "anim": ANIM_PACKS[_idx(seed, "anim", len(ANIM_PACKS))],
         "signature": SIGNATURES[_idx(seed, "sig", len(SIGNATURES))],
         "type_scale": TYPE_SCALES[_idx(seed, "type", len(TYPE_SCALES))],
     }
-    return ds
 
 
 def to_prompt_block(ds):

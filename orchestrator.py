@@ -66,9 +66,10 @@ def process(idx, total, b):
     t0 = time.time()
     print(f"\n{'='*66}\n[{idx}/{total}] {b['name']}  ({b.get('niche','')})\n{'='*66}", flush=True)
     attempts = []
+    last_fixes = None
     for attempt in range(1, MAX_ATTEMPTS + 1):
         salt = "" if attempt == 1 else f"r{attempt}"
-        brief = brief_compiler.build_prompt(b, salt=salt)
+        brief = brief_compiler.build_prompt(b, salt=salt, fixes=last_fixes)
         ds = brief["ds"]
         print(f"  attempt {attempt}: {ds['font']['head']}/{ds['font']['body']} · {ds['palette']['name']} · "
               f"{ds['layout']['name']} · {ds['anim']['name']}  (prompt {len(brief['prompt'])} ch)", flush=True)
@@ -93,7 +94,11 @@ def process(idx, total, b):
             return {"name": b["name"], "status": "Done", "url": url, "site_id": sid,
                     "score": card["score"], "grade": card["grade"], "attempts": attempts,
                     "local": local, "seconds": round(time.time() - t0)}
-        print(f"  ✗ failed QA — {'regenerating with new design' if attempt < MAX_ATTEMPTS else 'NOT deploying'}", flush=True)
+        last_fixes = list(card["fixes"])
+        amiss = card["gates"]["animation"]["missing"]
+        if amiss:
+            last_fixes.append("these effects/animations MUST appear (exact class/fn names): " + ", ".join(amiss))
+        print(f"  ✗ failed QA — {'regenerating with fixes + new design' if attempt < MAX_ATTEMPTS else 'NOT deploying'}", flush=True)
 
     return {"name": b["name"], "status": "Failed QA — not deployed", "url": None,
             "score": attempts[-1]["score"], "grade": attempts[-1]["grade"],

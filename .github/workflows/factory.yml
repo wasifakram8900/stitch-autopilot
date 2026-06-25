@@ -1,15 +1,15 @@
 name: factory
 
-# Agent-team website factory: designer team (design_dna + asset_lib) -> Stitch ->
-# technical team (qa.py hard gates incl. headless booking test) -> Netlify. Nothing
-# broken/generic/AI-image deploys. Needs 2 secrets: STITCH_KEY, NETLIFY_TOKEN.
-# Live URLs + per-site scorecards show in the log AND upload as the "factory-results" artifact.
+# Agent-team website factory, PARALLEL: a plan job lists the businesses, then a matrix job
+# builds each in its own runner (designer team -> Stitch -> qa.py hard gates incl. headless
+# booking test -> Netlify). max-parallel throttles to avoid Stitch rate-limiting.
+# Needs 2 secrets: STITCH_KEY, NETLIFY_TOKEN. Live URLs + scorecards upload per business.
 
 on:
   workflow_dispatch:
     inputs:
       only:
-        description: "Optional 1-based business index to run (blank = all)"
+        description: "Optional 1-based business index (blank = all, parallel)"
         required: false
         default: ""
 
@@ -18,9 +18,35 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  run:
+  plan:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    outputs:
+      indices: ${{ steps.gen.outputs.indices }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - id: gen
+        env:
+          ONLY: ${{ github.event.inputs.only }}
+        run: |
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import businesses, json, os
+          only = os.environ.get("ONLY", "").strip()
+          idx = [int(only)] if only.isdigit() else list(range(1, len(businesses.BUSINESSES) + 1))
+          print("indices=" + json.dumps(idx))
+          PY
+
+  build:
+    needs: plan
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      max-parallel: 4          # throttle: Stitch rate-limits rapid concurrent gens
+      matrix:
+        i: ${{ fromJSON(needs.plan.outputs.indices) }}
     steps:
       - uses: actions/checkout@v4
 
@@ -45,18 +71,18 @@ jobs:
       - name: Build asset packs (offline)
         run: python import_assets.py
 
-      - name: Run factory (designer -> Stitch -> QA gates -> deploy)
+      - name: Build business ${{ matrix.i }} (designer -> Stitch -> QA gates -> deploy)
         env:
           DEVICE: DESKTOP
           HEADLESS: "1"
           MAX_ATTEMPTS: "2"
-        run: python -u orchestrator.py ${{ github.event.inputs.only }}
+        run: python -u orchestrator.py ${{ matrix.i }}
 
       - name: Upload results
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: factory-results
+          name: factory-results-${{ matrix.i }}
           path: |
             out/factory_results.json
             out/factory/**/index.html
