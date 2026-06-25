@@ -1,0 +1,934 @@
+{
+ "gradient": [
+  {
+   "id": "grad-dusk-120",
+   "tags": [
+    "soft",
+    "section"
+   ],
+   "marker": "grad-dusk-120",
+   "prompt": "Section/panel background `.grad-dusk-120`: soft 2-stop brand gradient at 120deg.",
+   "css": ".grad-dusk-120{background:linear-gradient(120deg,color-mix(in srgb,var(--primary) 14%,var(--bg)),color-mix(in srgb,var(--accent) 18%,var(--bg)));}"
+  },
+  {
+   "id": "grad-dusk-135",
+   "tags": [
+    "soft",
+    "section"
+   ],
+   "marker": "grad-dusk-135",
+   "prompt": "Section/panel background `.grad-dusk-135`: soft 2-stop brand gradient at 135deg.",
+   "css": ".grad-dusk-135{background:linear-gradient(135deg,color-mix(in srgb,var(--primary) 14%,var(--bg)),color-mix(in srgb,var(--accent) 18%,var(--bg)));}"
+  },
+  {
+   "id": "grad-dusk-160",
+   "tags": [
+    "soft",
+    "section"
+   ],
+   "marker": "grad-dusk-160",
+   "prompt": "Section/panel background `.grad-dusk-160`: soft 2-stop brand gradient at 160deg.",
+   "css": ".grad-dusk-160{background:linear-gradient(160deg,color-mix(in srgb,var(--primary) 14%,var(--bg)),color-mix(in srgb,var(--accent) 18%,var(--bg)));}"
+  },
+  {
+   "id": "grad-dusk-200",
+   "tags": [
+    "soft",
+    "section"
+   ],
+   "marker": "grad-dusk-200",
+   "prompt": "Section/panel background `.grad-dusk-200`: soft 2-stop brand gradient at 200deg.",
+   "css": ".grad-dusk-200{background:linear-gradient(200deg,color-mix(in srgb,var(--primary) 14%,var(--bg)),color-mix(in srgb,var(--accent) 18%,var(--bg)));}"
+  },
+  {
+   "id": "grad-dusk-225",
+   "tags": [
+    "soft",
+    "section"
+   ],
+   "marker": "grad-dusk-225",
+   "prompt": "Section/panel background `.grad-dusk-225`: soft 2-stop brand gradient at 225deg.",
+   "css": ".grad-dusk-225{background:linear-gradient(225deg,color-mix(in srgb,var(--primary) 14%,var(--bg)),color-mix(in srgb,var(--accent) 18%,var(--bg)));}"
+  },
+  {
+   "id": "grad-dusk-260",
+   "tags": [
+    "soft",
+    "section"
+   ],
+   "marker": "grad-dusk-260",
+   "prompt": "Section/panel background `.grad-dusk-260`: soft 2-stop brand gradient at 260deg.",
+   "css": ".grad-dusk-260{background:linear-gradient(260deg,color-mix(in srgb,var(--primary) 14%,var(--bg)),color-mix(in srgb,var(--accent) 18%,var(--bg)));}"
+  },
+  {
+   "id": "grad-dusk-300",
+   "tags": [
+    "soft",
+    "section"
+   ],
+   "marker": "grad-dusk-300",
+   "prompt": "Section/panel background `.grad-dusk-300`: soft 2-stop brand gradient at 300deg.",
+   "css": ".grad-dusk-300{background:linear-gradient(300deg,color-mix(in srgb,var(--primary) 14%,var(--bg)),color-mix(in srgb,var(--accent) 18%,var(--bg)));}"
+  },
+  {
+   "id": "grad-ember-120",
+   "tags": [
+    "vivid",
+    "section"
+   ],
+   "marker": "grad-ember-120",
+   "prompt": "Section/panel background `.grad-ember-120`: vivid 2-stop brand gradient at 120deg.",
+   "css": ".grad-ember-120{background:linear-gradient(120deg,color-mix(in srgb,var(--primary) 26%,var(--bg)),color-mix(in srgb,var(--accent) 34%,var(--bg)));}"
+  },
+  {
+   "id": "grad-ember-135",
+   "tags": [
+    "vivid",
+    "section"
+   ],
+   "marker": "grad-ember-135",
+   "prompt": "Section/panel background `.grad-ember-135`: vivid 2-stop brand gradient at 135deg.",
+   "css": ".grad-ember-135{background:linear-gradient(135deg,color-mix(in srgb,var(--primary) 26%,var(--bg)),color-mix(in srgb,var(--accent) 34%,var(--bg)));}"
+  },
+  {
+   "id": "grad-ember-160",
+   "tags": [
+    "vivid",
+    "section"
+   ],
+   "marker": "grad-ember-160",
+   "prompt": "Section/panel background `.grad-ember-160`: vivid 2-stop brand gradient at 160deg.",
+   "css": ".grad-ember-160{background:linear-gradient(160deg,color-mix(in srgb,var(--primary) 26%,var(--bg)),color-mix(in srgb,var(--accent) 34%,var(--bg)));}"
+  },
+  {
+   "id": "grad-ember-200",
+   "tags": [
+    "vivid",
+    "section"
+   ],
+   "marker": "grad-ember-200",
+   "prompt": "Section/panel background `.grad-ember-200`: vivid 2-stop brand gradient at 200deg.",
+   "css": ".grad-ember-200{background:linear-gradient(200deg,color-mix(in srgb,var(--primary) 26%,var(--bg)),color-mix(in srgb,var(--accent) 34%,var(--bg)));}"
+  },
+  {
+   "id": "grad-ember-225",
+   "tags": [
+    "vivid",
+    "section"
+   ],
+   "marker": "grad-ember-225",
+   "prompt": "Section/panel background `.grad-ember-225`: vivid 2-stop brand gradient at 225deg.",
+   "css": ".grad-ember-225{background:linear-gradient(225deg,color-mix(in srgb,var(--primary) 26%,var(--bg)),color-mix(in srgb,var(--accent) 34%,var(--bg)));}"
+  },
+  {
+   "id": "grad-ember-260",
+   "tags": [
+    "vivid",
+    "section"
+   ],
+   "marker": "grad-ember-260",
+   "prompt": "Section/panel background `.grad-ember-260`: vivid 2-stop brand gradient at 260deg.",
+   "css": ".grad-ember-260{background:linear-gradient(260deg,color-mix(in srgb,var(--primary) 26%,var(--bg)),color-mix(in srgb,var(--accent) 34%,var(--bg)));}"
+  },
+  {
+   "id": "grad-ember-300",
+   "tags": [
+    "vivid",
+    "section"
+   ],
+   "marker": "grad-ember-300",
+   "prompt": "Section/panel background `.grad-ember-300`: vivid 2-stop brand gradient at 300deg.",
+   "css": ".grad-ember-300{background:linear-gradient(300deg,color-mix(in srgb,var(--primary) 26%,var(--bg)),color-mix(in srgb,var(--accent) 34%,var(--bg)));}"
+  },
+  {
+   "id": "grad-mojito-120",
+   "tags": [
+    "soft",
+    "section"
+   ],
+   "marker": "grad-mojito-120",
+   "prompt": "Section/panel background `.grad-mojito-120`: soft 3-stop brand gradient at 120deg.",
+   "css": ".grad-mojito-120{background:linear-gradient(120deg,color-mix(in srgb,var(--primary) 14%,var(--bg)),var(--surface),color-mix(in srgb,var(--accent) 18%,var(--bg)));}"
+  },
+  {
+   "id": "grad-mojito-135",
+   "tags": [
+    "soft",
+    "section"
+   ],
+   "marker": "grad-mojito-135",
+   "prompt": "Section/panel background `.grad-mojito-135`: soft 3-stop brand gradient at 135deg.",
+   "css": ".grad-mojito-135{background:linear-gradient(135deg,color-mix(in srgb,var(--primary) 14%,var(--bg)),var(--surface),color-mix(in srgb,var(--accent) 18%,var(--bg)));}"
+  },
+  {
+   "id": "grad-mojito-160",
+   "tags": [
+    "soft",
+    "section"
+   ],
+   "marker": "grad-mojito-160",
+   "prompt": "Section/panel background `.grad-mojito-160`: soft 3-stop brand gradient at 160deg.",
+   "css": ".grad-mojito-160{background:linear-gradient(160deg,color-mix(in srgb,var(--primary) 14%,var(--bg)),var(--surface),color-mix(in srgb,var(--accent) 18%,var(--bg)));}"
+  },
+  {
+   "id": "grad-mojito-200",
+   "tags": [
+    "soft",
+    "section"
+   ],
+   "marker": "grad-mojito-200",
+   "prompt": "Section/panel background `.grad-mojito-200`: soft 3-stop brand gradient at 200deg.",
+   "css": ".grad-mojito-200{background:linear-gradient(200deg,color-mix(in srgb,var(--primary) 14%,var(--bg)),var(--surface),color-mix(in srgb,var(--accent) 18%,var(--bg)));}"
+  },
+  {
+   "id": "grad-mojito-225",
+   "tags": [
+    "soft",
+    "section"
+   ],
+   "marker": "grad-mojito-225",
+   "prompt": "Section/panel background `.grad-mojito-225`: soft 3-stop brand gradient at 225deg.",
+   "css": ".grad-mojito-225{background:linear-gradient(225deg,color-mix(in srgb,var(--primary) 14%,var(--bg)),var(--surface),color-mix(in srgb,var(--accent) 18%,var(--bg)));}"
+  },
+  {
+   "id": "grad-mojito-260",
+   "tags": [
+    "soft",
+    "section"
+   ],
+   "marker": "grad-mojito-260",
+   "prompt": "Section/panel background `.grad-mojito-260`: soft 3-stop brand gradient at 260deg.",
+   "css": ".grad-mojito-260{background:linear-gradient(260deg,color-mix(in srgb,var(--primary) 14%,var(--bg)),var(--surface),color-mix(in srgb,var(--accent) 18%,var(--bg)));}"
+  },
+  {
+   "id": "grad-mojito-300",
+   "tags": [
+    "soft",
+    "section"
+   ],
+   "marker": "grad-mojito-300",
+   "prompt": "Section/panel background `.grad-mojito-300`: soft 3-stop brand gradient at 300deg.",
+   "css": ".grad-mojito-300{background:linear-gradient(300deg,color-mix(in srgb,var(--primary) 14%,var(--bg)),var(--surface),color-mix(in srgb,var(--accent) 18%,var(--bg)));}"
+  },
+  {
+   "id": "grad-aurora-120",
+   "tags": [
+    "vivid",
+    "section"
+   ],
+   "marker": "grad-aurora-120",
+   "prompt": "Section/panel background `.grad-aurora-120`: vivid 3-stop brand gradient at 120deg.",
+   "css": ".grad-aurora-120{background:linear-gradient(120deg,color-mix(in srgb,var(--primary) 26%,var(--bg)),var(--surface),color-mix(in srgb,var(--accent) 34%,var(--bg)));}"
+  },
+  {
+   "id": "grad-aurora-135",
+   "tags": [
+    "vivid",
+    "section"
+   ],
+   "marker": "grad-aurora-135",
+   "prompt": "Section/panel background `.grad-aurora-135`: vivid 3-stop brand gradient at 135deg.",
+   "css": ".grad-aurora-135{background:linear-gradient(135deg,color-mix(in srgb,var(--primary) 26%,var(--bg)),var(--surface),color-mix(in srgb,var(--accent) 34%,var(--bg)));}"
+  },
+  {
+   "id": "grad-aurora-160",
+   "tags": [
+    "vivid",
+    "section"
+   ],
+   "marker": "grad-aurora-160",
+   "prompt": "Section/panel background `.grad-aurora-160`: vivid 3-stop brand gradient at 160deg.",
+   "css": ".grad-aurora-160{background:linear-gradient(160deg,color-mix(in srgb,var(--primary) 26%,var(--bg)),var(--surface),color-mix(in srgb,var(--accent) 34%,var(--bg)));}"
+  },
+  {
+   "id": "grad-aurora-200",
+   "tags": [
+    "vivid",
+    "section"
+   ],
+   "marker": "grad-aurora-200",
+   "prompt": "Section/panel background `.grad-aurora-200`: vivid 3-stop brand gradient at 200deg.",
+   "css": ".grad-aurora-200{background:linear-gradient(200deg,color-mix(in srgb,var(--primary) 26%,var(--bg)),var(--surface),color-mix(in srgb,var(--accent) 34%,var(--bg)));}"
+  },
+  {
+   "id": "grad-aurora-225",
+   "tags": [
+    "vivid",
+    "section"
+   ],
+   "marker": "grad-aurora-225",
+   "prompt": "Section/panel background `.grad-aurora-225`: vivid 3-stop brand gradient at 225deg.",
+   "css": ".grad-aurora-225{background:linear-gradient(225deg,color-mix(in srgb,var(--primary) 26%,var(--bg)),var(--surface),color-mix(in srgb,var(--accent) 34%,var(--bg)));}"
+  },
+  {
+   "id": "grad-aurora-260",
+   "tags": [
+    "vivid",
+    "section"
+   ],
+   "marker": "grad-aurora-260",
+   "prompt": "Section/panel background `.grad-aurora-260`: vivid 3-stop brand gradient at 260deg.",
+   "css": ".grad-aurora-260{background:linear-gradient(260deg,color-mix(in srgb,var(--primary) 26%,var(--bg)),var(--surface),color-mix(in srgb,var(--accent) 34%,var(--bg)));}"
+  },
+  {
+   "id": "grad-aurora-300",
+   "tags": [
+    "vivid",
+    "section"
+   ],
+   "marker": "grad-aurora-300",
+   "prompt": "Section/panel background `.grad-aurora-300`: vivid 3-stop brand gradient at 300deg.",
+   "css": ".grad-aurora-300{background:linear-gradient(300deg,color-mix(in srgb,var(--primary) 26%,var(--bg)),var(--surface),color-mix(in srgb,var(--accent) 34%,var(--bg)));}"
+  },
+  {
+   "id": "grad-velvet-120",
+   "tags": [
+    "dark",
+    "section"
+   ],
+   "marker": "grad-velvet-120",
+   "prompt": "Section/panel background `.grad-velvet-120`: dark 2-stop brand gradient at 120deg.",
+   "css": ".grad-velvet-120{background:linear-gradient(120deg,color-mix(in srgb,var(--primary) 40%,var(--bg)),color-mix(in srgb,var(--accent) 22%,var(--bg)));}"
+  },
+  {
+   "id": "grad-velvet-135",
+   "tags": [
+    "dark",
+    "section"
+   ],
+   "marker": "grad-velvet-135",
+   "prompt": "Section/panel background `.grad-velvet-135`: dark 2-stop brand gradient at 135deg.",
+   "css": ".grad-velvet-135{background:linear-gradient(135deg,color-mix(in srgb,var(--primary) 40%,var(--bg)),color-mix(in srgb,var(--accent) 22%,var(--bg)));}"
+  },
+  {
+   "id": "grad-velvet-160",
+   "tags": [
+    "dark",
+    "section"
+   ],
+   "marker": "grad-velvet-160",
+   "prompt": "Section/panel background `.grad-velvet-160`: dark 2-stop brand gradient at 160deg.",
+   "css": ".grad-velvet-160{background:linear-gradient(160deg,color-mix(in srgb,var(--primary) 40%,var(--bg)),color-mix(in srgb,var(--accent) 22%,var(--bg)));}"
+  },
+  {
+   "id": "grad-velvet-200",
+   "tags": [
+    "dark",
+    "section"
+   ],
+   "marker": "grad-velvet-200",
+   "prompt": "Section/panel background `.grad-velvet-200`: dark 2-stop brand gradient at 200deg.",
+   "css": ".grad-velvet-200{background:linear-gradient(200deg,color-mix(in srgb,var(--primary) 40%,var(--bg)),color-mix(in srgb,var(--accent) 22%,var(--bg)));}"
+  },
+  {
+   "id": "grad-velvet-225",
+   "tags": [
+    "dark",
+    "section"
+   ],
+   "marker": "grad-velvet-225",
+   "prompt": "Section/panel background `.grad-velvet-225`: dark 2-stop brand gradient at 225deg.",
+   "css": ".grad-velvet-225{background:linear-gradient(225deg,color-mix(in srgb,var(--primary) 40%,var(--bg)),color-mix(in srgb,var(--accent) 22%,var(--bg)));}"
+  },
+  {
+   "id": "grad-velvet-260",
+   "tags": [
+    "dark",
+    "section"
+   ],
+   "marker": "grad-velvet-260",
+   "prompt": "Section/panel background `.grad-velvet-260`: dark 2-stop brand gradient at 260deg.",
+   "css": ".grad-velvet-260{background:linear-gradient(260deg,color-mix(in srgb,var(--primary) 40%,var(--bg)),color-mix(in srgb,var(--accent) 22%,var(--bg)));}"
+  },
+  {
+   "id": "grad-velvet-300",
+   "tags": [
+    "dark",
+    "section"
+   ],
+   "marker": "grad-velvet-300",
+   "prompt": "Section/panel background `.grad-velvet-300`: dark 2-stop brand gradient at 300deg.",
+   "css": ".grad-velvet-300{background:linear-gradient(300deg,color-mix(in srgb,var(--primary) 40%,var(--bg)),color-mix(in srgb,var(--accent) 22%,var(--bg)));}"
+  },
+  {
+   "id": "grad-citrus-120",
+   "tags": [
+    "vivid",
+    "section"
+   ],
+   "marker": "grad-citrus-120",
+   "prompt": "Section/panel background `.grad-citrus-120`: vivid 2-stop brand gradient at 120deg.",
+   "css": ".grad-citrus-120{background:linear-gradient(120deg,color-mix(in srgb,var(--primary) 26%,var(--bg)),color-mix(in srgb,var(--accent) 34%,var(--bg)));}"
+  },
+  {
+   "id": "grad-citrus-135",
+   "tags": [
+    "vivid",
+    "section"
+   ],
+   "marker": "grad-citrus-135",
+   "prompt": "Section/panel background `.grad-citrus-135`: vivid 2-stop brand gradient at 135deg.",
+   "css": ".grad-citrus-135{background:linear-gradient(135deg,color-mix(in srgb,var(--primary) 26%,var(--bg)),color-mix(in srgb,var(--accent) 34%,var(--bg)));}"
+  },
+  {
+   "id": "grad-citrus-160",
+   "tags": [
+    "vivid",
+    "section"
+   ],
+   "marker": "grad-citrus-160",
+   "prompt": "Section/panel background `.grad-citrus-160`: vivid 2-stop brand gradient at 160deg.",
+   "css": ".grad-citrus-160{background:linear-gradient(160deg,color-mix(in srgb,var(--primary) 26%,var(--bg)),color-mix(in srgb,var(--accent) 34%,var(--bg)));}"
+  },
+  {
+   "id": "grad-citrus-200",
+   "tags": [
+    "vivid",
+    "section"
+   ],
+   "marker": "grad-citrus-200",
+   "prompt": "Section/panel background `.grad-citrus-200`: vivid 2-stop brand gradient at 200deg.",
+   "css": ".grad-citrus-200{background:linear-gradient(200deg,color-mix(in srgb,var(--primary) 26%,var(--bg)),color-mix(in srgb,var(--accent) 34%,var(--bg)));}"
+  },
+  {
+   "id": "grad-citrus-225",
+   "tags": [
+    "vivid",
+    "section"
+   ],
+   "marker": "grad-citrus-225",
+   "prompt": "Section/panel background `.grad-citrus-225`: vivid 2-stop brand gradient at 225deg.",
+   "css": ".grad-citrus-225{background:linear-gradient(225deg,color-mix(in srgb,var(--primary) 26%,var(--bg)),color-mix(in srgb,var(--accent) 34%,var(--bg)));}"
+  },
+  {
+   "id": "grad-citrus-260",
+   "tags": [
+    "vivid",
+    "section"
+   ],
+   "marker": "grad-citrus-260",
+   "prompt": "Section/panel background `.grad-citrus-260`: vivid 2-stop brand gradient at 260deg.",
+   "css": ".grad-citrus-260{background:linear-gradient(260deg,color-mix(in srgb,var(--primary) 26%,var(--bg)),color-mix(in srgb,var(--accent) 34%,var(--bg)));}"
+  },
+  {
+   "id": "grad-citrus-300",
+   "tags": [
+    "vivid",
+    "section"
+   ],
+   "marker": "grad-citrus-300",
+   "prompt": "Section/panel background `.grad-citrus-300`: vivid 2-stop brand gradient at 300deg.",
+   "css": ".grad-citrus-300{background:linear-gradient(300deg,color-mix(in srgb,var(--primary) 26%,var(--bg)),color-mix(in srgb,var(--accent) 34%,var(--bg)));}"
+  },
+  {
+   "id": "grad-slate-120",
+   "tags": [
+    "soft",
+    "section"
+   ],
+   "marker": "grad-slate-120",
+   "prompt": "Section/panel background `.grad-slate-120`: soft 2-stop brand gradient at 120deg.",
+   "css": ".grad-slate-120{background:linear-gradient(120deg,color-mix(in srgb,var(--primary) 14%,var(--bg)),color-mix(in srgb,var(--accent) 18%,var(--bg)));}"
+  },
+  {
+   "id": "grad-slate-135",
+   "tags": [
+    "soft",
+    "section"
+   ],
+   "marker": "grad-slate-135",
+   "prompt": "Section/panel background `.grad-slate-135`: soft 2-stop brand gradient at 135deg.",
+   "css": ".grad-slate-135{background:linear-gradient(135deg,color-mix(in srgb,var(--primary) 14%,var(--bg)),color-mix(in srgb,var(--accent) 18%,var(--bg)));}"
+  },
+  {
+   "id": "grad-slate-160",
+   "tags": [
+    "soft",
+    "section"
+   ],
+   "marker": "grad-slate-160",
+   "prompt": "Section/panel background `.grad-slate-160`: soft 2-stop brand gradient at 160deg.",
+   "css": ".grad-slate-160{background:linear-gradient(160deg,color-mix(in srgb,var(--primary) 14%,var(--bg)),color-mix(in srgb,var(--accent) 18%,var(--bg)));}"
+  },
+  {
+   "id": "grad-slate-200",
+   "tags": [
+    "soft",
+    "section"
+   ],
+   "marker": "grad-slate-200",
+   "prompt": "Section/panel background `.grad-slate-200`: soft 2-stop brand gradient at 200deg.",
+   "css": ".grad-slate-200{background:linear-gradient(200deg,color-mix(in srgb,var(--primary) 14%,var(--bg)),color-mix(in srgb,var(--accent) 18%,var(--bg)));}"
+  },
+  {
+   "id": "grad-slate-225",
+   "tags": [
+    "soft",
+    "section"
+   ],
+   "marker": "grad-slate-225",
+   "prompt": "Section/panel background `.grad-slate-225`: soft 2-stop brand gradient at 225deg.",
+   "css": ".grad-slate-225{background:linear-gradient(225deg,color-mix(in srgb,var(--primary) 14%,var(--bg)),color-mix(in srgb,var(--accent) 18%,var(--bg)));}"
+  },
+  {
+   "id": "grad-slate-260",
+   "tags": [
+    "soft",
+    "section"
+   ],
+   "marker": "grad-slate-260",
+   "prompt": "Section/panel background `.grad-slate-260`: soft 2-stop brand gradient at 260deg.",
+   "css": ".grad-slate-260{background:linear-gradient(260deg,color-mix(in srgb,var(--primary) 14%,var(--bg)),color-mix(in srgb,var(--accent) 18%,var(--bg)));}"
+  },
+  {
+   "id": "grad-slate-300",
+   "tags": [
+    "soft",
+    "section"
+   ],
+   "marker": "grad-slate-300",
+   "prompt": "Section/panel background `.grad-slate-300`: soft 2-stop brand gradient at 300deg.",
+   "css": ".grad-slate-300{background:linear-gradient(300deg,color-mix(in srgb,var(--primary) 14%,var(--bg)),color-mix(in srgb,var(--accent) 18%,var(--bg)));}"
+  },
+  {
+   "id": "grad-orchid-120",
+   "tags": [
+    "vivid",
+    "section"
+   ],
+   "marker": "grad-orchid-120",
+   "prompt": "Section/panel background `.grad-orchid-120`: vivid 3-stop brand gradient at 120deg.",
+   "css": ".grad-orchid-120{background:linear-gradient(120deg,color-mix(in srgb,var(--primary) 26%,var(--bg)),var(--surface),color-mix(in srgb,var(--accent) 34%,var(--bg)));}"
+  },
+  {
+   "id": "grad-orchid-135",
+   "tags": [
+    "vivid",
+    "section"
+   ],
+   "marker": "grad-orchid-135",
+   "prompt": "Section/panel background `.grad-orchid-135`: vivid 3-stop brand gradient at 135deg.",
+   "css": ".grad-orchid-135{background:linear-gradient(135deg,color-mix(in srgb,var(--primary) 26%,var(--bg)),var(--surface),color-mix(in srgb,var(--accent) 34%,var(--bg)));}"
+  },
+  {
+   "id": "grad-orchid-160",
+   "tags": [
+    "vivid",
+    "section"
+   ],
+   "marker": "grad-orchid-160",
+   "prompt": "Section/panel background `.grad-orchid-160`: vivid 3-stop brand gradient at 160deg.",
+   "css": ".grad-orchid-160{background:linear-gradient(160deg,color-mix(in srgb,var(--primary) 26%,var(--bg)),var(--surface),color-mix(in srgb,var(--accent) 34%,var(--bg)));}"
+  },
+  {
+   "id": "grad-orchid-200",
+   "tags": [
+    "vivid",
+    "section"
+   ],
+   "marker": "grad-orchid-200",
+   "prompt": "Section/panel background `.grad-orchid-200`: vivid 3-stop brand gradient at 200deg.",
+   "css": ".grad-orchid-200{background:linear-gradient(200deg,color-mix(in srgb,var(--primary) 26%,var(--bg)),var(--surface),color-mix(in srgb,var(--accent) 34%,var(--bg)));}"
+  },
+  {
+   "id": "grad-orchid-225",
+   "tags": [
+    "vivid",
+    "section"
+   ],
+   "marker": "grad-orchid-225",
+   "prompt": "Section/panel background `.grad-orchid-225`: vivid 3-stop brand gradient at 225deg.",
+   "css": ".grad-orchid-225{background:linear-gradient(225deg,color-mix(in srgb,var(--primary) 26%,var(--bg)),var(--surface),color-mix(in srgb,var(--accent) 34%,var(--bg)));}"
+  },
+  {
+   "id": "grad-orchid-260",
+   "tags": [
+    "vivid",
+    "section"
+   ],
+   "marker": "grad-orchid-260",
+   "prompt": "Section/panel background `.grad-orchid-260`: vivid 3-stop brand gradient at 260deg.",
+   "css": ".grad-orchid-260{background:linear-gradient(260deg,color-mix(in srgb,var(--primary) 26%,var(--bg)),var(--surface),color-mix(in srgb,var(--accent) 34%,var(--bg)));}"
+  },
+  {
+   "id": "grad-orchid-300",
+   "tags": [
+    "vivid",
+    "section"
+   ],
+   "marker": "grad-orchid-300",
+   "prompt": "Section/panel background `.grad-orchid-300`: vivid 3-stop brand gradient at 300deg.",
+   "css": ".grad-orchid-300{background:linear-gradient(300deg,color-mix(in srgb,var(--primary) 26%,var(--bg)),var(--surface),color-mix(in srgb,var(--accent) 34%,var(--bg)));}"
+  },
+  {
+   "id": "grad-ocean-120",
+   "tags": [
+    "soft",
+    "section"
+   ],
+   "marker": "grad-ocean-120",
+   "prompt": "Section/panel background `.grad-ocean-120`: soft 3-stop brand gradient at 120deg.",
+   "css": ".grad-ocean-120{background:linear-gradient(120deg,color-mix(in srgb,var(--primary) 14%,var(--bg)),var(--surface),color-mix(in srgb,var(--accent) 18%,var(--bg)));}"
+  },
+  {
+   "id": "grad-ocean-135",
+   "tags": [
+    "soft",
+    "section"
+   ],
+   "marker": "grad-ocean-135",
+   "prompt": "Section/panel background `.grad-ocean-135`: soft 3-stop brand gradient at 135deg.",
+   "css": ".grad-ocean-135{background:linear-gradient(135deg,color-mix(in srgb,var(--primary) 14%,var(--bg)),var(--surface),color-mix(in srgb,var(--accent) 18%,var(--bg)));}"
+  },
+  {
+   "id": "grad-ocean-160",
+   "tags": [
+    "soft",
+    "section"
+   ],
+   "marker": "grad-ocean-160",
+   "prompt": "Section/panel background `.grad-ocean-160`: soft 3-stop brand gradient at 160deg.",
+   "css": ".grad-ocean-160{background:linear-gradient(160deg,color-mix(in srgb,var(--primary) 14%,var(--bg)),var(--surface),color-mix(in srgb,var(--accent) 18%,var(--bg)));}"
+  },
+  {
+   "id": "grad-ocean-200",
+   "tags": [
+    "soft",
+    "section"
+   ],
+   "marker": "grad-ocean-200",
+   "prompt": "Section/panel background `.grad-ocean-200`: soft 3-stop brand gradient at 200deg.",
+   "css": ".grad-ocean-200{background:linear-gradient(200deg,color-mix(in srgb,var(--primary) 14%,var(--bg)),var(--surface),color-mix(in srgb,var(--accent) 18%,var(--bg)));}"
+  },
+  {
+   "id": "grad-ocean-225",
+   "tags": [
+    "soft",
+    "section"
+   ],
+   "marker": "grad-ocean-225",
+   "prompt": "Section/panel background `.grad-ocean-225`: soft 3-stop brand gradient at 225deg.",
+   "css": ".grad-ocean-225{background:linear-gradient(225deg,color-mix(in srgb,var(--primary) 14%,var(--bg)),var(--surface),color-mix(in srgb,var(--accent) 18%,var(--bg)));}"
+  },
+  {
+   "id": "grad-ocean-260",
+   "tags": [
+    "soft",
+    "section"
+   ],
+   "marker": "grad-ocean-260",
+   "prompt": "Section/panel background `.grad-ocean-260`: soft 3-stop brand gradient at 260deg.",
+   "css": ".grad-ocean-260{background:linear-gradient(260deg,color-mix(in srgb,var(--primary) 14%,var(--bg)),var(--surface),color-mix(in srgb,var(--accent) 18%,var(--bg)));}"
+  },
+  {
+   "id": "grad-ocean-300",
+   "tags": [
+    "soft",
+    "section"
+   ],
+   "marker": "grad-ocean-300",
+   "prompt": "Section/panel background `.grad-ocean-300`: soft 3-stop brand gradient at 300deg.",
+   "css": ".grad-ocean-300{background:linear-gradient(300deg,color-mix(in srgb,var(--primary) 14%,var(--bg)),var(--surface),color-mix(in srgb,var(--accent) 18%,var(--bg)));}"
+  },
+  {
+   "id": "grad-sunset-120",
+   "tags": [
+    "vivid",
+    "section"
+   ],
+   "marker": "grad-sunset-120",
+   "prompt": "Section/panel background `.grad-sunset-120`: vivid 3-stop brand gradient at 120deg.",
+   "css": ".grad-sunset-120{background:linear-gradient(120deg,color-mix(in srgb,var(--primary) 26%,var(--bg)),var(--surface),color-mix(in srgb,var(--accent) 34%,var(--bg)));}"
+  },
+  {
+   "id": "grad-sunset-135",
+   "tags": [
+    "vivid",
+    "section"
+   ],
+   "marker": "grad-sunset-135",
+   "prompt": "Section/panel background `.grad-sunset-135`: vivid 3-stop brand gradient at 135deg.",
+   "css": ".grad-sunset-135{background:linear-gradient(135deg,color-mix(in srgb,var(--primary) 26%,var(--bg)),var(--surface),color-mix(in srgb,var(--accent) 34%,var(--bg)));}"
+  },
+  {
+   "id": "grad-sunset-160",
+   "tags": [
+    "vivid",
+    "section"
+   ],
+   "marker": "grad-sunset-160",
+   "prompt": "Section/panel background `.grad-sunset-160`: vivid 3-stop brand gradient at 160deg.",
+   "css": ".grad-sunset-160{background:linear-gradient(160deg,color-mix(in srgb,var(--primary) 26%,var(--bg)),var(--surface),color-mix(in srgb,var(--accent) 34%,var(--bg)));}"
+  },
+  {
+   "id": "grad-sunset-200",
+   "tags": [
+    "vivid",
+    "section"
+   ],
+   "marker": "grad-sunset-200",
+   "prompt": "Section/panel background `.grad-sunset-200`: vivid 3-stop brand gradient at 200deg.",
+   "css": ".grad-sunset-200{background:linear-gradient(200deg,color-mix(in srgb,var(--primary) 26%,var(--bg)),var(--surface),color-mix(in srgb,var(--accent) 34%,var(--bg)));}"
+  },
+  {
+   "id": "grad-sunset-225",
+   "tags": [
+    "vivid",
+    "section"
+   ],
+   "marker": "grad-sunset-225",
+   "prompt": "Section/panel background `.grad-sunset-225`: vivid 3-stop brand gradient at 225deg.",
+   "css": ".grad-sunset-225{background:linear-gradient(225deg,color-mix(in srgb,var(--primary) 26%,var(--bg)),var(--surface),color-mix(in srgb,var(--accent) 34%,var(--bg)));}"
+  },
+  {
+   "id": "grad-sunset-260",
+   "tags": [
+    "vivid",
+    "section"
+   ],
+   "marker": "grad-sunset-260",
+   "prompt": "Section/panel background `.grad-sunset-260`: vivid 3-stop brand gradient at 260deg.",
+   "css": ".grad-sunset-260{background:linear-gradient(260deg,color-mix(in srgb,var(--primary) 26%,var(--bg)),var(--surface),color-mix(in srgb,var(--accent) 34%,var(--bg)));}"
+  },
+  {
+   "id": "grad-sunset-300",
+   "tags": [
+    "vivid",
+    "section"
+   ],
+   "marker": "grad-sunset-300",
+   "prompt": "Section/panel background `.grad-sunset-300`: vivid 3-stop brand gradient at 300deg.",
+   "css": ".grad-sunset-300{background:linear-gradient(300deg,color-mix(in srgb,var(--primary) 26%,var(--bg)),var(--surface),color-mix(in srgb,var(--accent) 34%,var(--bg)));}"
+  },
+  {
+   "id": "grad-mist-120",
+   "tags": [
+    "soft",
+    "section"
+   ],
+   "marker": "grad-mist-120",
+   "prompt": "Section/panel background `.grad-mist-120`: soft 2-stop brand gradient at 120deg.",
+   "css": ".grad-mist-120{background:linear-gradient(120deg,color-mix(in srgb,var(--primary) 14%,var(--bg)),color-mix(in srgb,var(--accent) 18%,var(--bg)));}"
+  },
+  {
+   "id": "grad-mist-135",
+   "tags": [
+    "soft",
+    "section"
+   ],
+   "marker": "grad-mist-135",
+   "prompt": "Section/panel background `.grad-mist-135`: soft 2-stop brand gradient at 135deg.",
+   "css": ".grad-mist-135{background:linear-gradient(135deg,color-mix(in srgb,var(--primary) 14%,var(--bg)),color-mix(in srgb,var(--accent) 18%,var(--bg)));}"
+  },
+  {
+   "id": "grad-mist-160",
+   "tags": [
+    "soft",
+    "section"
+   ],
+   "marker": "grad-mist-160",
+   "prompt": "Section/panel background `.grad-mist-160`: soft 2-stop brand gradient at 160deg.",
+   "css": ".grad-mist-160{background:linear-gradient(160deg,color-mix(in srgb,var(--primary) 14%,var(--bg)),color-mix(in srgb,var(--accent) 18%,var(--bg)));}"
+  },
+  {
+   "id": "grad-mist-200",
+   "tags": [
+    "soft",
+    "section"
+   ],
+   "marker": "grad-mist-200",
+   "prompt": "Section/panel background `.grad-mist-200`: soft 2-stop brand gradient at 200deg.",
+   "css": ".grad-mist-200{background:linear-gradient(200deg,color-mix(in srgb,var(--primary) 14%,var(--bg)),color-mix(in srgb,var(--accent) 18%,var(--bg)));}"
+  },
+  {
+   "id": "grad-mist-225",
+   "tags": [
+    "soft",
+    "section"
+   ],
+   "marker": "grad-mist-225",
+   "prompt": "Section/panel background `.grad-mist-225`: soft 2-stop brand gradient at 225deg.",
+   "css": ".grad-mist-225{background:linear-gradient(225deg,color-mix(in srgb,var(--primary) 14%,var(--bg)),color-mix(in srgb,var(--accent) 18%,var(--bg)));}"
+  },
+  {
+   "id": "grad-mist-260",
+   "tags": [
+    "soft",
+    "section"
+   ],
+   "marker": "grad-mist-260",
+   "prompt": "Section/panel background `.grad-mist-260`: soft 2-stop brand gradient at 260deg.",
+   "css": ".grad-mist-260{background:linear-gradient(260deg,color-mix(in srgb,var(--primary) 14%,var(--bg)),color-mix(in srgb,var(--accent) 18%,var(--bg)));}"
+  },
+  {
+   "id": "grad-mist-300",
+   "tags": [
+    "soft",
+    "section"
+   ],
+   "marker": "grad-mist-300",
+   "prompt": "Section/panel background `.grad-mist-300`: soft 2-stop brand gradient at 300deg.",
+   "css": ".grad-mist-300{background:linear-gradient(300deg,color-mix(in srgb,var(--primary) 14%,var(--bg)),color-mix(in srgb,var(--accent) 18%,var(--bg)));}"
+  },
+  {
+   "id": "grad-noir-120",
+   "tags": [
+    "dark",
+    "section"
+   ],
+   "marker": "grad-noir-120",
+   "prompt": "Section/panel background `.grad-noir-120`: dark 2-stop brand gradient at 120deg.",
+   "css": ".grad-noir-120{background:linear-gradient(120deg,color-mix(in srgb,var(--primary) 40%,var(--bg)),color-mix(in srgb,var(--accent) 22%,var(--bg)));}"
+  },
+  {
+   "id": "grad-noir-135",
+   "tags": [
+    "dark",
+    "section"
+   ],
+   "marker": "grad-noir-135",
+   "prompt": "Section/panel background `.grad-noir-135`: dark 2-stop brand gradient at 135deg.",
+   "css": ".grad-noir-135{background:linear-gradient(135deg,color-mix(in srgb,var(--primary) 40%,var(--bg)),color-mix(in srgb,var(--accent) 22%,var(--bg)));}"
+  },
+  {
+   "id": "grad-noir-160",
+   "tags": [
+    "dark",
+    "section"
+   ],
+   "marker": "grad-noir-160",
+   "prompt": "Section/panel background `.grad-noir-160`: dark 2-stop brand gradient at 160deg.",
+   "css": ".grad-noir-160{background:linear-gradient(160deg,color-mix(in srgb,var(--primary) 40%,var(--bg)),color-mix(in srgb,var(--accent) 22%,var(--bg)));}"
+  },
+  {
+   "id": "grad-noir-200",
+   "tags": [
+    "dark",
+    "section"
+   ],
+   "marker": "grad-noir-200",
+   "prompt": "Section/panel background `.grad-noir-200`: dark 2-stop brand gradient at 200deg.",
+   "css": ".grad-noir-200{background:linear-gradient(200deg,color-mix(in srgb,var(--primary) 40%,var(--bg)),color-mix(in srgb,var(--accent) 22%,var(--bg)));}"
+  },
+  {
+   "id": "grad-noir-225",
+   "tags": [
+    "dark",
+    "section"
+   ],
+   "marker": "grad-noir-225",
+   "prompt": "Section/panel background `.grad-noir-225`: dark 2-stop brand gradient at 225deg.",
+   "css": ".grad-noir-225{background:linear-gradient(225deg,color-mix(in srgb,var(--primary) 40%,var(--bg)),color-mix(in srgb,var(--accent) 22%,var(--bg)));}"
+  },
+  {
+   "id": "grad-noir-260",
+   "tags": [
+    "dark",
+    "section"
+   ],
+   "marker": "grad-noir-260",
+   "prompt": "Section/panel background `.grad-noir-260`: dark 2-stop brand gradient at 260deg.",
+   "css": ".grad-noir-260{background:linear-gradient(260deg,color-mix(in srgb,var(--primary) 40%,var(--bg)),color-mix(in srgb,var(--accent) 22%,var(--bg)));}"
+  },
+  {
+   "id": "grad-noir-300",
+   "tags": [
+    "dark",
+    "section"
+   ],
+   "marker": "grad-noir-300",
+   "prompt": "Section/panel background `.grad-noir-300`: dark 2-stop brand gradient at 300deg.",
+   "css": ".grad-noir-300{background:linear-gradient(300deg,color-mix(in srgb,var(--primary) 40%,var(--bg)),color-mix(in srgb,var(--accent) 22%,var(--bg)));}"
+  }
+ ],
+ "background": [
+  {
+   "id": "mesh-dusk",
+   "tags": [
+    "soft",
+    "hero",
+    "mesh"
+   ],
+   "marker": "mesh-dusk",
+   "prompt": "Hero background `.mesh-dusk`: animated soft brand mesh (no photo).",
+   "css": "@keyframes flo_dusk{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}.mesh-dusk{background:radial-gradient(60% 80% at 25% 20%,color-mix(in srgb,var(--primary) 14%,transparent),transparent),radial-gradient(55% 65% at 80% 15%,color-mix(in srgb,var(--accent) 18%,transparent),transparent),radial-gradient(70% 70% at 60% 90%,color-mix(in srgb,var(--primary) 8%,transparent),transparent),var(--bg);background-size:160% 160%;animation:flo_dusk 16s ease infinite;}"
+  },
+  {
+   "id": "mesh-ember",
+   "tags": [
+    "vivid",
+    "hero",
+    "mesh"
+   ],
+   "marker": "mesh-ember",
+   "prompt": "Hero background `.mesh-ember`: animated vivid brand mesh (no photo).",
+   "css": "@keyframes flo_ember{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}.mesh-ember{background:radial-gradient(60% 80% at 25% 20%,color-mix(in srgb,var(--primary) 26%,transparent),transparent),radial-gradient(55% 65% at 80% 15%,color-mix(in srgb,var(--accent) 34%,transparent),transparent),radial-gradient(70% 70% at 60% 90%,color-mix(in srgb,var(--primary) 18%,transparent),transparent),var(--bg);background-size:160% 160%;animation:flo_ember 16s ease infinite;}"
+  },
+  {
+   "id": "mesh-mojito",
+   "tags": [
+    "soft",
+    "hero",
+    "mesh"
+   ],
+   "marker": "mesh-mojito",
+   "prompt": "Hero background `.mesh-mojito`: animated soft brand mesh (no photo).",
+   "css": "@keyframes flo_mojito{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}.mesh-mojito{background:radial-gradient(60% 80% at 25% 20%,color-mix(in srgb,var(--primary) 14%,transparent),transparent),radial-gradient(55% 65% at 80% 15%,color-mix(in srgb,var(--accent) 18%,transparent),transparent),radial-gradient(70% 70% at 60% 90%,color-mix(in srgb,var(--primary) 8%,transparent),transparent),var(--bg);background-size:160% 160%;animation:flo_mojito 16s ease infinite;}"
+  },
+  {
+   "id": "mesh-aurora",
+   "tags": [
+    "vivid",
+    "hero",
+    "mesh"
+   ],
+   "marker": "mesh-aurora",
+   "prompt": "Hero background `.mesh-aurora`: animated vivid brand mesh (no photo).",
+   "css": "@keyframes flo_aurora{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}.mesh-aurora{background:radial-gradient(60% 80% at 25% 20%,color-mix(in srgb,var(--primary) 26%,transparent),transparent),radial-gradient(55% 65% at 80% 15%,color-mix(in srgb,var(--accent) 34%,transparent),transparent),radial-gradient(70% 70% at 60% 90%,color-mix(in srgb,var(--primary) 18%,transparent),transparent),var(--bg);background-size:160% 160%;animation:flo_aurora 16s ease infinite;}"
+  },
+  {
+   "id": "mesh-velvet",
+   "tags": [
+    "dark",
+    "hero",
+    "mesh"
+   ],
+   "marker": "mesh-velvet",
+   "prompt": "Hero background `.mesh-velvet`: animated dark brand mesh (no photo).",
+   "css": "@keyframes flo_velvet{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}.mesh-velvet{background:radial-gradient(60% 80% at 25% 20%,color-mix(in srgb,var(--primary) 40%,transparent),transparent),radial-gradient(55% 65% at 80% 15%,color-mix(in srgb,var(--accent) 22%,transparent),transparent),radial-gradient(70% 70% at 60% 90%,color-mix(in srgb,var(--primary) 32%,transparent),transparent),var(--bg);background-size:160% 160%;animation:flo_velvet 16s ease infinite;}"
+  },
+  {
+   "id": "mesh-citrus",
+   "tags": [
+    "vivid",
+    "hero",
+    "mesh"
+   ],
+   "marker": "mesh-citrus",
+   "prompt": "Hero background `.mesh-citrus`: animated vivid brand mesh (no photo).",
+   "css": "@keyframes flo_citrus{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}.mesh-citrus{background:radial-gradient(60% 80% at 25% 20%,color-mix(in srgb,var(--primary) 26%,transparent),transparent),radial-gradient(55% 65% at 80% 15%,color-mix(in srgb,var(--accent) 34%,transparent),transparent),radial-gradient(70% 70% at 60% 90%,color-mix(in srgb,var(--primary) 18%,transparent),transparent),var(--bg);background-size:160% 160%;animation:flo_citrus 16s ease infinite;}"
+  },
+  {
+   "id": "mesh-slate",
+   "tags": [
+    "soft",
+    "hero",
+    "mesh"
+   ],
+   "marker": "mesh-slate",
+   "prompt": "Hero background `.mesh-slate`: animated soft brand mesh (no photo).",
+   "css": "@keyframes flo_slate{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}.mesh-slate{background:radial-gradient(60% 80% at 25% 20%,color-mix(in srgb,var(--primary) 14%,transparent),transparent),radial-gradient(55% 65% at 80% 15%,color-mix(in srgb,var(--accent) 18%,transparent),transparent),radial-gradient(70% 70% at 60% 90%,color-mix(in srgb,var(--primary) 8%,transparent),transparent),var(--bg);background-size:160% 160%;animation:flo_slate 16s ease infinite;}"
+  },
+  {
+   "id": "mesh-orchid",
+   "tags": [
+    "vivid",
+    "hero",
+    "mesh"
+   ],
+   "marker": "mesh-orchid",
+   "prompt": "Hero background `.mesh-orchid`: animated vivid brand mesh (no photo).",
+   "css": "@keyframes flo_orchid{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}.mesh-orchid{background:radial-gradient(60% 80% at 25% 20%,color-mix(in srgb,var(--primary) 26%,transparent),transparent),radial-gradient(55% 65% at 80% 15%,color-mix(in srgb,var(--accent) 34%,transparent),transparent),radial-gradient(70% 70% at 60% 90%,color-mix(in srgb,var(--primary) 18%,transparent),transparent),var(--bg);background-size:160% 160%;animation:flo_orchid 16s ease infinite;}"
+  }
+ ]
+}

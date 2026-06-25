@@ -1,0 +1,1198 @@
+{
+ "pairings": [
+  {
+   "id": "pair-0",
+   "head": "Playfair Display",
+   "body": "DM Sans",
+   "mood": "editorial, elegant, premium",
+   "tags": [
+    "editorial",
+    "elegant",
+    "premium"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-1",
+   "head": "Playfair Display",
+   "body": "Nunito Sans",
+   "mood": "editorial, elegant, premium",
+   "tags": [
+    "editorial",
+    "elegant",
+    "premium"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Nunito+Sans:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-2",
+   "head": "Playfair Display",
+   "body": "Hanken Grotesk",
+   "mood": "editorial, elegant, premium",
+   "tags": [
+    "editorial",
+    "elegant",
+    "premium"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Hanken+Grotesk:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-3",
+   "head": "Cormorant Garamond",
+   "body": "DM Sans",
+   "mood": "editorial, elegant",
+   "tags": [
+    "editorial",
+    "elegant"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-4",
+   "head": "Cormorant Garamond",
+   "body": "Source Sans 3",
+   "mood": "editorial, elegant",
+   "tags": [
+    "editorial",
+    "elegant"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Source+Sans+3:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-5",
+   "head": "Cormorant Garamond",
+   "body": "Rubik",
+   "mood": "editorial, elegant",
+   "tags": [
+    "editorial",
+    "elegant"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Rubik:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-6",
+   "head": "DM Serif Display",
+   "body": "Work Sans",
+   "mood": "editorial, bold",
+   "tags": [
+    "editorial",
+    "bold"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400;700&family=Work+Sans:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-7",
+   "head": "DM Serif Display",
+   "body": "Manrope",
+   "mood": "editorial, bold",
+   "tags": [
+    "editorial",
+    "bold"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400;700&family=Manrope:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-8",
+   "head": "DM Serif Display",
+   "body": "Mulish",
+   "mood": "editorial, bold",
+   "tags": [
+    "editorial",
+    "bold"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400;700&family=Mulish:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-9",
+   "head": "Libre Baskerville",
+   "body": "Manrope",
+   "mood": "editorial, classic",
+   "tags": [
+    "editorial",
+    "classic"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Manrope:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-10",
+   "head": "Libre Baskerville",
+   "body": "Public Sans",
+   "mood": "editorial, classic",
+   "tags": [
+    "editorial",
+    "classic"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Public+Sans:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-11",
+   "head": "Libre Baskerville",
+   "body": "Nunito Sans",
+   "mood": "editorial, classic",
+   "tags": [
+    "editorial",
+    "classic"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Nunito+Sans:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-12",
+   "head": "Lora",
+   "body": "Mulish",
+   "mood": "editorial, warm",
+   "tags": [
+    "editorial",
+    "warm"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Mulish:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-13",
+   "head": "Lora",
+   "body": "Public Sans",
+   "mood": "editorial, warm",
+   "tags": [
+    "editorial",
+    "warm"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Public+Sans:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-14",
+   "head": "Lora",
+   "body": "Hanken Grotesk",
+   "mood": "editorial, warm",
+   "tags": [
+    "editorial",
+    "warm"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Hanken+Grotesk:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-15",
+   "head": "Bodoni Moda",
+   "body": "Work Sans",
+   "mood": "elegant, fashion",
+   "tags": [
+    "elegant",
+    "fashion"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;700&family=Work+Sans:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-16",
+   "head": "Bodoni Moda",
+   "body": "Hanken Grotesk",
+   "mood": "elegant, fashion",
+   "tags": [
+    "elegant",
+    "fashion"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;700&family=Hanken+Grotesk:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-17",
+   "head": "Bodoni Moda",
+   "body": "Rubik",
+   "mood": "elegant, fashion",
+   "tags": [
+    "elegant",
+    "fashion"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;700&family=Rubik:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-18",
+   "head": "Marcellus",
+   "body": "Rubik",
+   "mood": "elegant, premium",
+   "tags": [
+    "elegant",
+    "premium"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Marcellus:wght@400;700&family=Rubik:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-19",
+   "head": "Marcellus",
+   "body": "Nunito Sans",
+   "mood": "elegant, premium",
+   "tags": [
+    "elegant",
+    "premium"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Marcellus:wght@400;700&family=Nunito+Sans:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-20",
+   "head": "Marcellus",
+   "body": "DM Sans",
+   "mood": "elegant, premium",
+   "tags": [
+    "elegant",
+    "premium"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Marcellus:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-21",
+   "head": "Prata",
+   "body": "Figtree",
+   "mood": "elegant, fashion",
+   "tags": [
+    "elegant",
+    "fashion"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Prata:wght@400;700&family=Figtree:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-22",
+   "head": "Prata",
+   "body": "Manrope",
+   "mood": "elegant, fashion",
+   "tags": [
+    "elegant",
+    "fashion"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Prata:wght@400;700&family=Manrope:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-23",
+   "head": "Prata",
+   "body": "Rubik",
+   "mood": "elegant, fashion",
+   "tags": [
+    "elegant",
+    "fashion"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Prata:wght@400;700&family=Rubik:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-24",
+   "head": "Spectral",
+   "body": "Manrope",
+   "mood": "editorial, calm",
+   "tags": [
+    "editorial",
+    "calm"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Spectral:wght@400;700&family=Manrope:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-25",
+   "head": "Spectral",
+   "body": "Public Sans",
+   "mood": "editorial, calm",
+   "tags": [
+    "editorial",
+    "calm"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Spectral:wght@400;700&family=Public+Sans:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-26",
+   "head": "Spectral",
+   "body": "Inter",
+   "mood": "editorial, calm",
+   "tags": [
+    "editorial",
+    "calm"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Spectral:wght@400;700&family=Inter:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-27",
+   "head": "Cardo",
+   "body": "Rubik",
+   "mood": "classic, editorial",
+   "tags": [
+    "classic",
+    "editorial"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&family=Rubik:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-28",
+   "head": "Cardo",
+   "body": "Source Sans 3",
+   "mood": "classic, editorial",
+   "tags": [
+    "classic",
+    "editorial"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&family=Source+Sans+3:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-29",
+   "head": "Cardo",
+   "body": "Nunito Sans",
+   "mood": "classic, editorial",
+   "tags": [
+    "classic",
+    "editorial"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&family=Nunito+Sans:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-30",
+   "head": "EB Garamond",
+   "body": "Figtree",
+   "mood": "classic, editorial",
+   "tags": [
+    "classic",
+    "editorial"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&family=Figtree:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-31",
+   "head": "EB Garamond",
+   "body": "Manrope",
+   "mood": "classic, editorial",
+   "tags": [
+    "classic",
+    "editorial"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&family=Manrope:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-32",
+   "head": "EB Garamond",
+   "body": "Rubik",
+   "mood": "classic, editorial",
+   "tags": [
+    "classic",
+    "editorial"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&family=Rubik:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-33",
+   "head": "Italiana",
+   "body": "Karla",
+   "mood": "elegant, fashion",
+   "tags": [
+    "elegant",
+    "fashion"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Italiana:wght@400;700&family=Karla:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-34",
+   "head": "Italiana",
+   "body": "Public Sans",
+   "mood": "elegant, fashion",
+   "tags": [
+    "elegant",
+    "fashion"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Italiana:wght@400;700&family=Public+Sans:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-35",
+   "head": "Italiana",
+   "body": "Rubik",
+   "mood": "elegant, fashion",
+   "tags": [
+    "elegant",
+    "fashion"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Italiana:wght@400;700&family=Rubik:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-36",
+   "head": "Abril Fatface",
+   "body": "Rubik",
+   "mood": "bold, display",
+   "tags": [
+    "bold",
+    "display"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Abril+Fatface:wght@400;700&family=Rubik:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-37",
+   "head": "Abril Fatface",
+   "body": "Work Sans",
+   "mood": "bold, display",
+   "tags": [
+    "bold",
+    "display"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Abril+Fatface:wght@400;700&family=Work+Sans:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-38",
+   "head": "Abril Fatface",
+   "body": "Figtree",
+   "mood": "bold, display",
+   "tags": [
+    "bold",
+    "display"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Abril+Fatface:wght@400;700&family=Figtree:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-39",
+   "head": "Bebas Neue",
+   "body": "Mulish",
+   "mood": "bold, loud, industrial",
+   "tags": [
+    "bold",
+    "loud",
+    "industrial"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Bebas+Neue:wght@400;700&family=Mulish:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-40",
+   "head": "Bebas Neue",
+   "body": "Public Sans",
+   "mood": "bold, loud, industrial",
+   "tags": [
+    "bold",
+    "loud",
+    "industrial"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Bebas+Neue:wght@400;700&family=Public+Sans:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-41",
+   "head": "Bebas Neue",
+   "body": "Work Sans",
+   "mood": "bold, loud, industrial",
+   "tags": [
+    "bold",
+    "loud",
+    "industrial"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Bebas+Neue:wght@400;700&family=Work+Sans:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-42",
+   "head": "Oswald",
+   "body": "DM Sans",
+   "mood": "bold, industrial",
+   "tags": [
+    "bold",
+    "industrial"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-43",
+   "head": "Oswald",
+   "body": "Karla",
+   "mood": "bold, industrial",
+   "tags": [
+    "bold",
+    "industrial"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Karla:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-44",
+   "head": "Oswald",
+   "body": "Source Sans 3",
+   "mood": "bold, industrial",
+   "tags": [
+    "bold",
+    "industrial"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Source+Sans+3:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-45",
+   "head": "Anton",
+   "body": "Inter",
+   "mood": "bold, loud",
+   "tags": [
+    "bold",
+    "loud"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Anton:wght@400;700&family=Inter:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-46",
+   "head": "Anton",
+   "body": "Source Sans 3",
+   "mood": "bold, loud",
+   "tags": [
+    "bold",
+    "loud"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Anton:wght@400;700&family=Source+Sans+3:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-47",
+   "head": "Anton",
+   "body": "Work Sans",
+   "mood": "bold, loud",
+   "tags": [
+    "bold",
+    "loud"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Anton:wght@400;700&family=Work+Sans:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-48",
+   "head": "Archivo Black",
+   "body": "Public Sans",
+   "mood": "bold, industrial",
+   "tags": [
+    "bold",
+    "industrial"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Archivo+Black:wght@400;700&family=Public+Sans:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-49",
+   "head": "Archivo Black",
+   "body": "Karla",
+   "mood": "bold, industrial",
+   "tags": [
+    "bold",
+    "industrial"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Archivo+Black:wght@400;700&family=Karla:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-50",
+   "head": "Archivo Black",
+   "body": "Figtree",
+   "mood": "bold, industrial",
+   "tags": [
+    "bold",
+    "industrial"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Archivo+Black:wght@400;700&family=Figtree:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-51",
+   "head": "Righteous",
+   "body": "Manrope",
+   "mood": "bold, playful",
+   "tags": [
+    "bold",
+    "playful"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Righteous:wght@400;700&family=Manrope:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-52",
+   "head": "Righteous",
+   "body": "Mulish",
+   "mood": "bold, playful",
+   "tags": [
+    "bold",
+    "playful"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Righteous:wght@400;700&family=Mulish:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-53",
+   "head": "Righteous",
+   "body": "Public Sans",
+   "mood": "bold, playful",
+   "tags": [
+    "bold",
+    "playful"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Righteous:wght@400;700&family=Public+Sans:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-54",
+   "head": "Teko",
+   "body": "Inter",
+   "mood": "bold, sport",
+   "tags": [
+    "bold",
+    "sport"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Teko:wght@400;700&family=Inter:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-55",
+   "head": "Teko",
+   "body": "DM Sans",
+   "mood": "bold, sport",
+   "tags": [
+    "bold",
+    "sport"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Teko:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-56",
+   "head": "Teko",
+   "body": "Hanken Grotesk",
+   "mood": "bold, sport",
+   "tags": [
+    "bold",
+    "sport"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Teko:wght@400;700&family=Hanken+Grotesk:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-57",
+   "head": "Poppins",
+   "body": "Inter",
+   "mood": "modern, friendly",
+   "tags": [
+    "modern",
+    "friendly"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Inter:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-58",
+   "head": "Poppins",
+   "body": "Nunito Sans",
+   "mood": "modern, friendly",
+   "tags": [
+    "modern",
+    "friendly"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Nunito+Sans:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-59",
+   "head": "Poppins",
+   "body": "Hanken Grotesk",
+   "mood": "modern, friendly",
+   "tags": [
+    "modern",
+    "friendly"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Hanken+Grotesk:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-60",
+   "head": "Montserrat",
+   "body": "Inter",
+   "mood": "modern, clean",
+   "tags": [
+    "modern",
+    "clean"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Inter:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-61",
+   "head": "Montserrat",
+   "body": "Nunito Sans",
+   "mood": "modern, clean",
+   "tags": [
+    "modern",
+    "clean"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Nunito+Sans:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-62",
+   "head": "Montserrat",
+   "body": "Hanken Grotesk",
+   "mood": "modern, clean",
+   "tags": [
+    "modern",
+    "clean"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Hanken+Grotesk:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-63",
+   "head": "Raleway",
+   "body": "Source Sans 3",
+   "mood": "modern, elegant",
+   "tags": [
+    "modern",
+    "elegant"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&family=Source+Sans+3:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-64",
+   "head": "Raleway",
+   "body": "DM Sans",
+   "mood": "modern, elegant",
+   "tags": [
+    "modern",
+    "elegant"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-65",
+   "head": "Raleway",
+   "body": "Manrope",
+   "mood": "modern, elegant",
+   "tags": [
+    "modern",
+    "elegant"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&family=Manrope:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-66",
+   "head": "Sora",
+   "body": "Mulish",
+   "mood": "modern, tech",
+   "tags": [
+    "modern",
+    "tech"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Sora:wght@400;700&family=Mulish:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-67",
+   "head": "Sora",
+   "body": "Manrope",
+   "mood": "modern, tech",
+   "tags": [
+    "modern",
+    "tech"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Sora:wght@400;700&family=Manrope:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-68",
+   "head": "Sora",
+   "body": "Nunito Sans",
+   "mood": "modern, tech",
+   "tags": [
+    "modern",
+    "tech"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Sora:wght@400;700&family=Nunito+Sans:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-69",
+   "head": "Space Grotesk",
+   "body": "Mulish",
+   "mood": "modern, tech",
+   "tags": [
+    "modern",
+    "tech"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Mulish:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-70",
+   "head": "Space Grotesk",
+   "body": "Work Sans",
+   "mood": "modern, tech",
+   "tags": [
+    "modern",
+    "tech"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Work+Sans:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-71",
+   "head": "Space Grotesk",
+   "body": "Karla",
+   "mood": "modern, tech",
+   "tags": [
+    "modern",
+    "tech"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Karla:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-72",
+   "head": "Syne",
+   "body": "Inter",
+   "mood": "bold, artsy",
+   "tags": [
+    "bold",
+    "artsy"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Syne:wght@400;700&family=Inter:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-73",
+   "head": "Syne",
+   "body": "Hanken Grotesk",
+   "mood": "bold, artsy",
+   "tags": [
+    "bold",
+    "artsy"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Syne:wght@400;700&family=Hanken+Grotesk:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-74",
+   "head": "Syne",
+   "body": "Source Sans 3",
+   "mood": "bold, artsy",
+   "tags": [
+    "bold",
+    "artsy"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Syne:wght@400;700&family=Source+Sans+3:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-75",
+   "head": "Outfit",
+   "body": "Rubik",
+   "mood": "modern, clean",
+   "tags": [
+    "modern",
+    "clean"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&family=Rubik:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-76",
+   "head": "Outfit",
+   "body": "Source Sans 3",
+   "mood": "modern, clean",
+   "tags": [
+    "modern",
+    "clean"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&family=Source+Sans+3:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-77",
+   "head": "Outfit",
+   "body": "Manrope",
+   "mood": "modern, clean",
+   "tags": [
+    "modern",
+    "clean"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&family=Manrope:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-78",
+   "head": "Lexend",
+   "body": "Public Sans",
+   "mood": "modern, calm",
+   "tags": [
+    "modern",
+    "calm"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&family=Public+Sans:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-79",
+   "head": "Lexend",
+   "body": "Hanken Grotesk",
+   "mood": "modern, calm",
+   "tags": [
+    "modern",
+    "calm"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&family=Hanken+Grotesk:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-80",
+   "head": "Lexend",
+   "body": "Figtree",
+   "mood": "modern, calm",
+   "tags": [
+    "modern",
+    "calm"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&family=Figtree:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-81",
+   "head": "Sora",
+   "body": "Mulish",
+   "mood": "modern, tech",
+   "tags": [
+    "modern",
+    "tech"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Sora:wght@400;700&family=Mulish:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-82",
+   "head": "Sora",
+   "body": "Manrope",
+   "mood": "modern, tech",
+   "tags": [
+    "modern",
+    "tech"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Sora:wght@400;700&family=Manrope:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-83",
+   "head": "Sora",
+   "body": "Nunito Sans",
+   "mood": "modern, tech",
+   "tags": [
+    "modern",
+    "tech"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Sora:wght@400;700&family=Nunito+Sans:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-84",
+   "head": "Josefin Sans",
+   "body": "DM Sans",
+   "mood": "elegant, light",
+   "tags": [
+    "elegant",
+    "light"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-85",
+   "head": "Josefin Sans",
+   "body": "Source Sans 3",
+   "mood": "elegant, light",
+   "tags": [
+    "elegant",
+    "light"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&family=Source+Sans+3:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-86",
+   "head": "Josefin Sans",
+   "body": "Nunito Sans",
+   "mood": "elegant, light",
+   "tags": [
+    "elegant",
+    "light"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&family=Nunito+Sans:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-87",
+   "head": "Fjalla One",
+   "body": "Karla",
+   "mood": "bold, industrial",
+   "tags": [
+    "bold",
+    "industrial"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Fjalla+One:wght@400;700&family=Karla:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-88",
+   "head": "Fjalla One",
+   "body": "DM Sans",
+   "mood": "bold, industrial",
+   "tags": [
+    "bold",
+    "industrial"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Fjalla+One:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-89",
+   "head": "Fjalla One",
+   "body": "Nunito Sans",
+   "mood": "bold, industrial",
+   "tags": [
+    "bold",
+    "industrial"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Fjalla+One:wght@400;700&family=Nunito+Sans:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-90",
+   "head": "Unbounded",
+   "body": "Work Sans",
+   "mood": "bold, display",
+   "tags": [
+    "bold",
+    "display"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700&family=Work+Sans:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-91",
+   "head": "Unbounded",
+   "body": "Inter",
+   "mood": "bold, display",
+   "tags": [
+    "bold",
+    "display"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700&family=Inter:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-92",
+   "head": "Unbounded",
+   "body": "Figtree",
+   "mood": "bold, display",
+   "tags": [
+    "bold",
+    "display"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700&family=Figtree:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-93",
+   "head": "Epilogue",
+   "body": "Karla",
+   "mood": "modern, clean",
+   "tags": [
+    "modern",
+    "clean"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700&family=Karla:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-94",
+   "head": "Epilogue",
+   "body": "Mulish",
+   "mood": "modern, clean",
+   "tags": [
+    "modern",
+    "clean"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700&family=Mulish:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-95",
+   "head": "Epilogue",
+   "body": "Inter",
+   "mood": "modern, clean",
+   "tags": [
+    "modern",
+    "clean"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700&family=Inter:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-96",
+   "head": "Schibsted Grotesk",
+   "body": "Hanken Grotesk",
+   "mood": "modern, editorial",
+   "tags": [
+    "modern",
+    "editorial"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;700&family=Hanken+Grotesk:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-97",
+   "head": "Schibsted Grotesk",
+   "body": "Figtree",
+   "mood": "modern, editorial",
+   "tags": [
+    "modern",
+    "editorial"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;700&family=Figtree:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-98",
+   "head": "Schibsted Grotesk",
+   "body": "Rubik",
+   "mood": "modern, editorial",
+   "tags": [
+    "modern",
+    "editorial"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;700&family=Rubik:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-99",
+   "head": "Hanken Grotesk",
+   "body": "Figtree",
+   "mood": "modern, clean",
+   "tags": [
+    "modern",
+    "clean"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;700&family=Figtree:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-100",
+   "head": "Hanken Grotesk",
+   "body": "DM Sans",
+   "mood": "modern, clean",
+   "tags": [
+    "modern",
+    "clean"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-101",
+   "head": "Hanken Grotesk",
+   "body": "Work Sans",
+   "mood": "modern, clean",
+   "tags": [
+    "modern",
+    "clean"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;700&family=Work+Sans:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-102",
+   "head": "Bricolage Grotesque",
+   "body": "Mulish",
+   "mood": "bold, display",
+   "tags": [
+    "bold",
+    "display"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;700&family=Mulish:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-103",
+   "head": "Bricolage Grotesque",
+   "body": "Hanken Grotesk",
+   "mood": "bold, display",
+   "tags": [
+    "bold",
+    "display"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;700&family=Hanken+Grotesk:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-104",
+   "head": "Bricolage Grotesque",
+   "body": "Public Sans",
+   "mood": "bold, display",
+   "tags": [
+    "bold",
+    "display"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;700&family=Public+Sans:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-105",
+   "head": "Instrument Serif",
+   "body": "Figtree",
+   "mood": "editorial, elegant",
+   "tags": [
+    "editorial",
+    "elegant"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;700&family=Figtree:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-106",
+   "head": "Instrument Serif",
+   "body": "Nunito Sans",
+   "mood": "editorial, elegant",
+   "tags": [
+    "editorial",
+    "elegant"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;700&family=Nunito+Sans:wght@300;400;500;600&display=swap"
+  },
+  {
+   "id": "pair-107",
+   "head": "Instrument Serif",
+   "body": "Work Sans",
+   "mood": "editorial, elegant",
+   "tags": [
+    "editorial",
+    "elegant"
+   ],
+   "href": "https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400;700&family=Work+Sans:wght@300;400;500;600&display=swap"
+  }
+ ]
+}

@@ -1,0 +1,62 @@
+name: factory
+
+# Agent-team website factory: designer team (design_dna + asset_lib) -> Stitch ->
+# technical team (qa.py hard gates incl. headless booking test) -> Netlify. Nothing
+# broken/generic/AI-image deploys. Needs 2 secrets: STITCH_KEY, NETLIFY_TOKEN.
+# Live URLs + per-site scorecards show in the log AND upload as the "factory-results" artifact.
+
+on:
+  workflow_dispatch:
+    inputs:
+      only:
+        description: "Optional 1-based business index to run (blank = all)"
+        required: false
+        default: ""
+
+concurrency:
+  group: factory
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: |
+          pip install -r requirements.txt
+          pip install playwright
+          playwright install --with-deps chromium
+
+      - name: Write secret files
+        run: |
+          printf '%s' "${STITCH_KEY}"    > .stitch_key
+          printf '%s' "${NETLIFY_TOKEN}" > .netlify_token
+        env:
+          STITCH_KEY:    ${{ secrets.STITCH_KEY }}
+          NETLIFY_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
+
+      - name: Build asset packs (offline)
+        run: python import_assets.py
+
+      - name: Run factory (designer -> Stitch -> QA gates -> deploy)
+        env:
+          DEVICE: DESKTOP
+          HEADLESS: "1"
+          MAX_ATTEMPTS: "2"
+        run: python -u orchestrator.py ${{ github.event.inputs.only }}
+
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: factory-results
+          path: |
+            out/factory_results.json
+            out/factory/**/index.html

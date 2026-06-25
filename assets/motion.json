@@ -1,0 +1,240 @@
+{
+ "animation": [
+  {
+   "id": "a-fadeInUp",
+   "tags": [
+    "entrance"
+   ],
+   "marker": "a-fadeInUp",
+   "prompt": "Elements with class `.a-fadeInUp` animate via @keyframes a-fadeInUp (fadeInUp).",
+   "css": "@keyframes a-fadeInUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}.a-fadeInUp{animation:a-fadeInUp .7s ease both}"
+  },
+  {
+   "id": "a-fadeInDown",
+   "tags": [
+    "entrance"
+   ],
+   "marker": "a-fadeInDown",
+   "prompt": "Elements with class `.a-fadeInDown` animate via @keyframes a-fadeInDown (fadeInDown).",
+   "css": "@keyframes a-fadeInDown{from{opacity:0;transform:translateY(-40px)}to{opacity:1;transform:none}}.a-fadeInDown{animation:a-fadeInDown .7s ease both}"
+  },
+  {
+   "id": "a-fadeInLeft",
+   "tags": [
+    "entrance"
+   ],
+   "marker": "a-fadeInLeft",
+   "prompt": "Elements with class `.a-fadeInLeft` animate via @keyframes a-fadeInLeft (fadeInLeft).",
+   "css": "@keyframes a-fadeInLeft{from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:none}}.a-fadeInLeft{animation:a-fadeInLeft .7s ease both}"
+  },
+  {
+   "id": "a-fadeInRight",
+   "tags": [
+    "entrance"
+   ],
+   "marker": "a-fadeInRight",
+   "prompt": "Elements with class `.a-fadeInRight` animate via @keyframes a-fadeInRight (fadeInRight).",
+   "css": "@keyframes a-fadeInRight{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:none}}.a-fadeInRight{animation:a-fadeInRight .7s ease both}"
+  },
+  {
+   "id": "a-zoomIn",
+   "tags": [
+    "entrance"
+   ],
+   "marker": "a-zoomIn",
+   "prompt": "Elements with class `.a-zoomIn` animate via @keyframes a-zoomIn (zoomIn).",
+   "css": "@keyframes a-zoomIn{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:none}}.a-zoomIn{animation:a-zoomIn .7s ease both}"
+  },
+  {
+   "id": "a-slideInUp",
+   "tags": [
+    "entrance"
+   ],
+   "marker": "a-slideInUp",
+   "prompt": "Elements with class `.a-slideInUp` animate via @keyframes a-slideInUp (slideInUp).",
+   "css": "@keyframes a-slideInUp{from{transform:translateY(100%)}to{transform:none}}.a-slideInUp{animation:a-slideInUp .7s ease both}"
+  },
+  {
+   "id": "a-bounceIn",
+   "tags": [
+    "entrance"
+   ],
+   "marker": "a-bounceIn",
+   "prompt": "Elements with class `.a-bounceIn` animate via @keyframes a-bounceIn (bounceIn).",
+   "css": "@keyframes a-bounceIn{0%{opacity:0;transform:scale(.6)}60%{transform:scale(1.05)}100%{opacity:1;transform:none}}.a-bounceIn{animation:a-bounceIn .7s ease both}"
+  },
+  {
+   "id": "a-flipInX",
+   "tags": [
+    "entrance"
+   ],
+   "marker": "a-flipInX",
+   "prompt": "Elements with class `.a-flipInX` animate via @keyframes a-flipInX (flipInX).",
+   "css": "@keyframes a-flipInX{from{opacity:0;transform:perspective(400px) rotateX(80deg)}to{opacity:1;transform:none}}.a-flipInX{animation:a-flipInX .7s ease both}"
+  },
+  {
+   "id": "a-rotateIn",
+   "tags": [
+    "entrance"
+   ],
+   "marker": "a-rotateIn",
+   "prompt": "Elements with class `.a-rotateIn` animate via @keyframes a-rotateIn (rotateIn).",
+   "css": "@keyframes a-rotateIn{from{opacity:0;transform:rotate(-12deg)}to{opacity:1;transform:none}}.a-rotateIn{animation:a-rotateIn .7s ease both}"
+  },
+  {
+   "id": "a-backInUp",
+   "tags": [
+    "entrance"
+   ],
+   "marker": "a-backInUp",
+   "prompt": "Elements with class `.a-backInUp` animate via @keyframes a-backInUp (backInUp).",
+   "css": "@keyframes a-backInUp{0%{opacity:.2;transform:translateY(60px) scale(.7)}80%{transform:translateY(0) scale(.95)}100%{opacity:1;transform:none}}.a-backInUp{animation:a-backInUp .7s ease both}"
+  },
+  {
+   "id": "a-fadeInUpBig",
+   "tags": [
+    "entrance"
+   ],
+   "marker": "a-fadeInUpBig",
+   "prompt": "Elements with class `.a-fadeInUpBig` animate via @keyframes a-fadeInUpBig (fadeInUpBig).",
+   "css": "@keyframes a-fadeInUpBig{from{opacity:0;transform:translateY(120px)}to{opacity:1;transform:none}}.a-fadeInUpBig{animation:a-fadeInUpBig .7s ease both}"
+  },
+  {
+   "id": "a-blurIn",
+   "tags": [
+    "entrance"
+   ],
+   "marker": "a-blurIn",
+   "prompt": "Elements with class `.a-blurIn` animate via @keyframes a-blurIn (blurIn).",
+   "css": "@keyframes a-blurIn{from{opacity:0;filter:blur(12px)}to{opacity:1;filter:blur(0)}}.a-blurIn{animation:a-blurIn .7s ease both}"
+  },
+  {
+   "id": "a-pulse",
+   "tags": [
+    "attention"
+   ],
+   "marker": "a-pulse",
+   "prompt": "Elements with class `.a-pulse` animate via @keyframes a-pulse (pulse).",
+   "css": "@keyframes a-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}.a-pulse{animation:a-pulse 2.4s ease both infinite}"
+  },
+  {
+   "id": "a-float",
+   "tags": [
+    "attention"
+   ],
+   "marker": "a-float",
+   "prompt": "Elements with class `.a-float` animate via @keyframes a-float (float).",
+   "css": "@keyframes a-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}.a-float{animation:a-float 2.4s ease both infinite}"
+  },
+  {
+   "id": "a-shake",
+   "tags": [
+    "attention"
+   ],
+   "marker": "a-shake",
+   "prompt": "Elements with class `.a-shake` animate via @keyframes a-shake (shake).",
+   "css": "@keyframes a-shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}.a-shake{animation:a-shake 2.4s ease both infinite}"
+  },
+  {
+   "id": "a-tada",
+   "tags": [
+    "attention"
+   ],
+   "marker": "a-tada",
+   "prompt": "Elements with class `.a-tada` animate via @keyframes a-tada (tada).",
+   "css": "@keyframes a-tada{0%{transform:scale(1)}10%{transform:scale(.95) rotate(-3deg)}50%{transform:scale(1.05) rotate(3deg)}100%{transform:scale(1)}}.a-tada{animation:a-tada 2.4s ease both infinite}"
+  },
+  {
+   "id": "a-heartBeat",
+   "tags": [
+    "attention"
+   ],
+   "marker": "a-heartBeat",
+   "prompt": "Elements with class `.a-heartBeat` animate via @keyframes a-heartBeat (heartBeat).",
+   "css": "@keyframes a-heartBeat{0%,100%{transform:scale(1)}14%{transform:scale(1.1)}28%{transform:scale(1)}42%{transform:scale(1.1)}}.a-heartBeat{animation:a-heartBeat 2.4s ease both infinite}"
+  },
+  {
+   "id": "a-swing",
+   "tags": [
+    "attention"
+   ],
+   "marker": "a-swing",
+   "prompt": "Elements with class `.a-swing` animate via @keyframes a-swing (swing).",
+   "css": "@keyframes a-swing{20%{transform:rotate(8deg)}40%{transform:rotate(-6deg)}60%{transform:rotate(3deg)}100%{transform:rotate(0)}}.a-swing{animation:a-swing 2.4s ease both infinite}"
+  }
+ ],
+ "hover": [
+  {
+   "id": "hvr-grow",
+   "tags": [
+    "hover"
+   ],
+   "marker": "hvr-grow",
+   "prompt": "Interactive elements use class `.hvr-grow` (grow hover effect).",
+   "css": ".hvr-grow{transition:transform .3s}.hvr-grow:hover{transform:scale(1.06)}"
+  },
+  {
+   "id": "hvr-shrink",
+   "tags": [
+    "hover"
+   ],
+   "marker": "hvr-shrink",
+   "prompt": "Interactive elements use class `.hvr-shrink` (shrink hover effect).",
+   "css": ".hvr-shrink{transition:transform .3s}.hvr-shrink:hover{transform:scale(.95)}"
+  },
+  {
+   "id": "hvr-float",
+   "tags": [
+    "hover"
+   ],
+   "marker": "hvr-float",
+   "prompt": "Interactive elements use class `.hvr-float` (float hover effect).",
+   "css": ".hvr-float{transition:transform .3s}.hvr-float:hover{transform:translateY(-6px)}"
+  },
+  {
+   "id": "hvr-bob",
+   "tags": [
+    "hover"
+   ],
+   "marker": "@keyframes hvr-bob",
+   "prompt": "Interactive elements use class `.hvr-bob` (bob hover effect).",
+   "css": "@keyframes hvr-bob{0%,100%{transform:translateY(-4px)}50%{transform:translateY(0)}}.hvr-bob:hover{animation:hvr-bob .9s ease infinite}"
+  },
+  {
+   "id": "hvr-buzz",
+   "tags": [
+    "hover"
+   ],
+   "marker": "@keyframes hvr-buzz",
+   "prompt": "Interactive elements use class `.hvr-buzz` (buzz hover effect).",
+   "css": "@keyframes hvr-buzz{50%{transform:translateX(2px) rotate(1deg)}100%{transform:translateX(-2px) rotate(-1deg)}}.hvr-buzz:hover{animation:hvr-buzz .15s linear infinite}"
+  },
+  {
+   "id": "hvr-sweep-right",
+   "tags": [
+    "hover"
+   ],
+   "marker": "hvr-sweep",
+   "prompt": "Interactive elements use class `.hvr-sweep-right` (sweep-right hover effect).",
+   "css": ".hvr-sweep{position:relative;transition:color .3s;z-index:1}.hvr-sweep::before{content:'';position:absolute;inset:0;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .3s;z-index:-1}.hvr-sweep:hover::before{transform:scaleX(1)}"
+  },
+  {
+   "id": "hvr-underline-center",
+   "tags": [
+    "hover"
+   ],
+   "marker": "hvr-uc",
+   "prompt": "Interactive elements use class `.hvr-underline-center` (underline-center hover effect).",
+   "css": ".hvr-uc{position:relative}.hvr-uc::after{content:'';position:absolute;left:50%;right:50%;bottom:-3px;height:2px;background:var(--accent);transition:left .3s,right .3s}.hvr-uc:hover::after{left:0;right:0}"
+  },
+  {
+   "id": "hvr-glow-ring",
+   "tags": [
+    "hover"
+   ],
+   "marker": "hvr-ring",
+   "prompt": "Interactive elements use class `.hvr-glow-ring` (glow-ring hover effect).",
+   "css": ".hvr-ring{transition:box-shadow .3s}.hvr-ring:hover{box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 40%,transparent)}"
+  }
+ ]
+}

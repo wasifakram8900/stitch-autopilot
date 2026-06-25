@@ -44,6 +44,26 @@ def _design_screen(structured):
     return None
 
 
+# Booking-page JS markers. ALL present = Stitch's agent finished wiring the booking flow
+# (it returns HTML immediately but PARTIAL, then keeps building — we must poll past that).
+_BOOKING_MARKERS = ("showPage", "renderCalendar", "confirmBooking", "toggleService")
+POLL_EVERY = int(os.environ.get("STITCH_POLL_EVERY", "25"))
+POLL_TRIES = int(os.environ.get("STITCH_POLL_TRIES", "12"))
+
+
+def _complete(html):
+    return bool(html) and all(m in html for m in _BOOKING_MARKERS)
+
+
+async def _fetch_screen_html(s, pid, sid, key):
+    g = await s.call_tool("get_screen", {"projectId": pid, "screenId": sid,
+                                         "name": f"projects/{pid}/screens/{sid}"})
+    dl = ((g.structuredContent or {}).get("htmlCode") or {}).get("downloadUrl")
+    if not dl:
+        return None
+    return requests.get(dl, headers={"X-Goog-Api-Key": key}, timeout=120).text
+
+
 async def _generate(prompt, device, title):
     key = _key()
     async with streamablehttp_client(
@@ -70,27 +90,40 @@ async def _generate(prompt, device, title):
                 raise RuntimeError(f"generate failed: {txt[:300]}")
 
             screen = _design_screen(res.structuredContent)
+            sid = (screen or {}).get("id")
+            if not sid:
+                ids = re.findall(r"screens/([0-9a-f]+)", json.dumps(res.structuredContent, default=str))
+                sid = ids[-1] if ids else None
+            if not sid:
+                raise RuntimeError(f"generate produced no screen id: {json.dumps(res.structuredContent, default=str)[:300]}")
 
-            # fallback: poll get_screen if html not ready inline
-            if not (screen and (screen.get("htmlCode") or {}).get("downloadUrl")):
-                _, sids = pid, re.findall(r"screens/([0-9a-f]+)", json.dumps(res.structuredContent, default=str))
-                for _try in range(10):
-                    await asyncio.sleep(30)
-                    ld = await s.call_tool("list_screens", {"projectId": pid})
-                    sc = _design_screen(ld.structuredContent)
-                    if sc and (sc.get("htmlCode") or {}).get("downloadUrl"):
-                        screen = sc
-                        break
+            # Poll get_screen until booking JS is fully present AND byte count stops growing
+            # (Stitch's agent keeps building after the first partial HTML). Keep the largest html
+            # seen as fallback; return early once complete + settled across 2 polls.
+            best, best_len, prev_len, stable = None, 0, -1, 0
+            for _try in range(POLL_TRIES):
+                try:
+                    html = await _fetch_screen_html(s, pid, sid, key)
+                except Exception:
+                    html = None
+                if html and len(html) >= best_len:
+                    best, best_len = html, len(html)
+                if _complete(html):
+                    if abs(len(html) - prev_len) < 200:        # size settled
+                        stable += 1
+                        if stable >= 2:
+                            break
+                    else:
+                        stable = 0
+                    prev_len = len(html)
+                if _try < POLL_TRIES - 1:
+                    await asyncio.sleep(POLL_EVERY)
 
-            if not screen:
-                raise RuntimeError("no DESIGN screen produced")
-            dl = (screen.get("htmlCode") or {}).get("downloadUrl")
-            if not dl:
-                raise RuntimeError("DESIGN screen has no htmlCode downloadUrl")
-
-            html = requests.get(dl, headers={"X-Goog-Api-Key": key}, timeout=120).text
-            return {"projectId": pid, "screenId": screen.get("id"), "html": html,
-                    "screenshot": (screen.get("screenshot") or {}).get("downloadUrl")}
+            if not best:
+                raise RuntimeError("no HTML produced after polling get_screen")
+            return {"projectId": pid, "screenId": sid, "html": best,
+                    "screenshot": (screen.get("screenshot") or {}).get("downloadUrl") if screen else None,
+                    "complete": _complete(best)}
 
 
 def generate_site_html(prompt, device="DESKTOP", title="Site"):

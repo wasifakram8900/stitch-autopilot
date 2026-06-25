@@ -1,0 +1,70 @@
+{
+ "glow": [
+  {
+   "id": "glow-accent-soft",
+   "tags": [
+    "soft",
+    "cards",
+    "dark"
+   ],
+   "marker": "glow-accent-soft",
+   "prompt": "`.glow-accent-soft` on hover: soft accent glow (box-shadow blur 28px).",
+   "css": ".glow-accent-soft{transition:box-shadow .35s}.glow-accent-soft:hover{box-shadow:0 0 28px 0px color-mix(in srgb,var(--accent) 35%,transparent)}"
+  },
+  {
+   "id": "glow-primary-soft",
+   "tags": [
+    "soft",
+    "cards",
+    "dark"
+   ],
+   "marker": "glow-primary-soft",
+   "prompt": "`.glow-primary-soft` on hover: soft primary glow (box-shadow blur 28px).",
+   "css": ".glow-primary-soft{transition:box-shadow .35s}.glow-primary-soft:hover{box-shadow:0 0 28px 0px color-mix(in srgb,var(--primary) 35%,transparent)}"
+  },
+  {
+   "id": "glow-accent-medium",
+   "tags": [
+    "medium",
+    "cards",
+    "dark"
+   ],
+   "marker": "glow-accent-medium",
+   "prompt": "`.glow-accent-medium` on hover: medium accent glow (box-shadow blur 40px).",
+   "css": ".glow-accent-medium{transition:box-shadow .35s}.glow-accent-medium:hover{box-shadow:0 0 40px 6px color-mix(in srgb,var(--accent) 35%,transparent)}"
+  },
+  {
+   "id": "glow-primary-medium",
+   "tags": [
+    "medium",
+    "cards",
+    "dark"
+   ],
+   "marker": "glow-primary-medium",
+   "prompt": "`.glow-primary-medium` on hover: medium primary glow (box-shadow blur 40px).",
+   "css": ".glow-primary-medium{transition:box-shadow .35s}.glow-primary-medium:hover{box-shadow:0 0 40px 6px color-mix(in srgb,var(--primary) 35%,transparent)}"
+  },
+  {
+   "id": "glow-accent-strong",
+   "tags": [
+    "strong",
+    "cards",
+    "dark"
+   ],
+   "marker": "glow-accent-strong",
+   "prompt": "`.glow-accent-strong` on hover: strong accent glow (box-shadow blur 60px).",
+   "css": ".glow-accent-strong{transition:box-shadow .35s}.glow-accent-strong:hover{box-shadow:0 0 60px 12px color-mix(in srgb,var(--accent) 35%,transparent)}"
+  },
+  {
+   "id": "glow-primary-strong",
+   "tags": [
+    "strong",
+    "cards",
+    "dark"
+   ],
+   "marker": "glow-primary-strong",
+   "prompt": "`.glow-primary-strong` on hover: strong primary glow (box-shadow blur 60px).",
+   "css": ".glow-primary-strong{transition:box-shadow .35s}.glow-primary-strong:hover{box-shadow:0 0 60px 12px color-mix(in srgb,var(--primary) 35%,transparent)}"
+  }
+ ]
+}
