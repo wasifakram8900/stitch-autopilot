@@ -60,14 +60,19 @@ def process_row(rec):
     print(f"  -> generating site for '{rec['name']}' ({rec['industry']}) ...", flush=True)
     out = stitch_client.generate_site_html(build_prompt(rec), device=DEVICE, title=rec["name"][:60] or "Site")
     print(f"     html {len(out['html'])} bytes, deploying to Netlify ...", flush=True)
-    url, sid = netlify_deploy.deploy_html(out["html"])
+    url, sid = netlify_deploy.deploy_html(out["html"], site_name=rec["name"])
     print(f"     LIVE: {url}", flush=True)
     return url
 
 
 def one_pass():
     if not SHEET_ID:
-        raise SystemExit("SHEET_ID not set (.env)")
+        # Sheet not wired yet. Skip cleanly (exit 0) so the cron stays green and
+        # auto-activates the moment the SHEET_ID + GCP_SA_JSON repo secrets are set —
+        # no more "all jobs failed" emails every 15 min.
+        print("SHEET_ID not set — no sheet connected yet, skipping this pass. "
+              "Add SHEET_ID + GCP_SA_JSON repo secrets to start generating sites.")
+        return
     today = datetime.date.today().isoformat()
     done_today = sheets_client.done_today_count(SHEET_ID)
     remaining = DAILY_CAP - done_today

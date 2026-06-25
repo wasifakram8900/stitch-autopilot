@@ -129,7 +129,7 @@ def process(idx, total, b):
         f.write(out["html"])
 
     print(f"[{idx}] Netlify: deploying ...", flush=True)
-    url, sid = netlify_deploy.deploy_html(out["html"])
+    url, sid = netlify_deploy.deploy_html(out["html"], site_name=b["name"])
     print(f"[{idx}] LIVE ✅  {url}   ({time.time()-t0:.0f}s total)", flush=True)
     return {"name": b["name"], "url": url, "site_id": sid, "projectId": out["projectId"],
             "local": p, "seconds": round(time.time() - t0)}

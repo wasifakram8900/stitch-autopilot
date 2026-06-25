@@ -2,7 +2,7 @@
 Deploy a single-page site to Netlify via the file-digest API (correct MIME types).
 Needs NETLIFY_AUTH_TOKEN (env or .netlify_token file). Each call = new Netlify site.
 """
-import os, time, hashlib, requests
+import os, re, time, hashlib, secrets, requests
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 API = "https://api.netlify.com/api/v1"
@@ -18,16 +18,45 @@ def _token():
     return t
 
 
+def slugify(name, maxlen=37):
+    """Business name -> Netlify subdomain. e.g. 'Lily Med Spa' -> 'lily-med-spa'.
+    Netlify subdomains: lowercase a-z0-9 and hyphens, must start/end alnum, <=63 chars.
+    Cap at 37 to leave room for a uniqueness suffix."""
+    s = re.sub(r"[^a-z0-9]+", "-", (name or "").lower())
+    s = re.sub(r"-{2,}", "-", s).strip("-")
+    return s[:maxlen].strip("-") or "site"
+
+
+def _create_site(headers, site_name):
+    """Create a site, preferring `site_name` as the subdomain. Netlify subdomains are
+    GLOBALLY unique, so if the name is taken (HTTP 422) append a short suffix and retry;
+    final fallback lets Netlify pick a random name so a deploy never hard-fails on naming."""
+    candidates = []
+    if site_name:
+        base = slugify(site_name)
+        candidates = [base] + [f"{base}-{secrets.token_hex(2)}" for _ in range(4)]
+    candidates.append(None)  # last resort: Netlify-generated random name
+    last = None
+    for nm in candidates:
+        r = requests.post(f"{API}/sites", headers=headers,
+                          json=({"name": nm} if nm else {}), timeout=60)
+        if r.status_code == 422 and nm is not None:
+            last = r           # name taken or invalid -> try the next candidate
+            continue
+        r.raise_for_status()
+        return r.json()
+    last.raise_for_status()
+
+
 def deploy_html(html, site_name=None, extra_files=None):
     """
-    html: index.html content (str). site_name: optional unique subdomain.
+    html: index.html content (str). site_name: business name -> becomes the subdomain
+      (slugified, e.g. 'Lily Med Spa' -> lily-med-spa.netlify.app), unique-suffixed on clash.
     extra_files: optional {"/path": str|bytes}.
     Returns (live_url, site_id). Uses digest deploy so .html serves as text/html.
     """
     h = {"Authorization": f"Bearer {_token()}"}
-    site = requests.post(f"{API}/sites", headers=h, json=({"name": site_name} if site_name else {}), timeout=60)
-    site.raise_for_status()
-    site = site.json()
+    site = _create_site(h, site_name)
     sid = site["id"]
 
     files = {"/index.html": html.encode("utf-8") if isinstance(html, str) else html}
