@@ -67,8 +67,8 @@ Nothing broken / generic / AI-image ever deploys.
 4. **Real prospect data** — currently 3 fake businesses. Real outreach scrapes name/services/reviews/hours per lead (feeds `businesses.py` shape). Ties to gmaps-lead-engine.
 
 ## 8. ⚠️ NEEDS IMPROVEMENT (ranked)
-1. **Palettes not niche-mood-tagged** → odd colors (roofing got pink "blush plum"). Fix: add mood tags (corporate/warm/masculine/feminine/dark) to the 15 palettes in `design_dna.py` + per-niche palette prefs in `niches.py`/archetypes. Fonts/layouts/CTAs already carry niche; only color sometimes off.
-2. **Palette pool small (15)** vs fonts (122). Expand palettes (parametric or curated) for more variety.
+1. ✅ **DONE (2026-07-02)** — Palettes now mood-tagged; niches carry `palette` mood prefs. `design_dna.PALETTES` each has `mood`; `niches.ARCHETYPES[*].palette` + `niches.PALETTE_OVERRIDE` (barber/tattoo/landscaping/pool/solar/auto/yoga/florist/nails). `_wpick` keys palette on name+scheme+mood. Verified: roofing→navy mustard, gym→ink&lime, dental→clinical, medspa→blush plum, barber→graphite ember, landscaping→olive linen.
+2. ✅ **DONE (2026-07-02)** — Palette pool 15 → **24** (added steel blue, graphite ember, hunter brass, terracotta clay, arctic sky, burgundy cream, charcoal amber, sage stone, plum orchid — fills masculine/industrial/corporate/clinical-light gap). Combos now ≈ 45M.
 3. **Small-ref-set bias dilution** — with <~5 references, scout style_bias = all tags → muddies palette pick. Self-resolves at 100 refs. 
 4. **Copywriter = templated** (good, not great). Optional cheap-LLM copy pass later for real voice (breaks "no LLM" slightly).
 5. **100/day scaling** — poll adds ~5min/site; matrix parallel built but Stitch throttles (max-parallel 4). May need credit/rate headroom or chunked scheduling.

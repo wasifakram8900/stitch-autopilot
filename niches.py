@@ -15,27 +15,35 @@ Helpers expose the per-module shapes:
 # ── design + effect archetypes (font moods / palette schemes / layouts / effect tags) ──
 ARCHETYPES = {
     "fitness":      {"font": ["bold", "industrial", "sport", "tech", "loud", "display"], "scheme": ["dark"],
+                     "palette": ["bold", "energetic", "masculine", "sporty", "vibrant"],
                      "layout": ["centered-massive-type", "scroll-snap-sections", "full-bleed-gradient", "bento-grid"],
                      "effects": ["bold", "dark", "kinetic", "interactive"]},
     "trade":        {"font": ["bold", "industrial", "clean", "modern"], "scheme": ["light", "dark"],
+                     "palette": ["masculine", "industrial", "rugged", "corporate", "trust", "professional"],
                      "layout": ["split-hero", "centered-massive-type", "bento-grid"],
                      "effects": ["bold", "interactive", "essential"]},
     "beauty":       {"font": ["elegant", "editorial", "calm", "light", "fashion"], "scheme": ["light"],
+                     "palette": ["feminine", "soft", "elegant", "luxe", "beauty"],
                      "layout": ["magazine-editorial", "centered-massive-type", "asymmetric-offset"],
                      "effects": ["calm", "soft", "premium"]},
     "medical":      {"font": ["clean", "modern", "calm", "editorial"], "scheme": ["light"],
+                     "palette": ["clinical", "clean", "trust", "calm", "medical"],
                      "layout": ["split-hero", "centered-massive-type", "magazine-editorial"],
                      "effects": ["calm", "minimal", "essential", "premium"]},
     "food":         {"font": ["warm", "editorial", "elegant", "modern"], "scheme": ["light"],
+                     "palette": ["warm", "natural", "inviting", "hospitality", "premium"],
                      "layout": ["magazine-editorial", "asymmetric-offset", "full-bleed-gradient"],
                      "effects": ["soft", "editorial", "premium"]},
     "professional": {"font": ["classic", "editorial", "clean", "modern"], "scheme": ["light"],
+                     "palette": ["corporate", "professional", "trust", "premium", "elegant"],
                      "layout": ["magazine-editorial", "split-hero"],
                      "effects": ["minimal", "editorial", "essential"]},
     "events":       {"font": ["elegant", "editorial", "premium", "fashion", "display"], "scheme": ["light", "dark"],
+                     "palette": ["luxe", "premium", "elegant", "feminine"],
                      "layout": ["full-bleed-gradient", "magazine-editorial", "asymmetric-offset"],
                      "effects": ["premium", "soft", "headline"]},
     "tech":         {"font": ["tech", "modern", "geometric", "bold"], "scheme": ["dark", "light"],
+                     "palette": ["tech", "creative", "bold", "vibrant", "premium"],
                      "layout": ["bento-grid", "split-hero", "full-bleed-gradient", "scroll-snap-sections"],
                      "effects": ["tech", "modern", "bold"]},
 }
@@ -350,8 +358,24 @@ for _canon, _n in NICHES.items():
 
 NICHE_WORDS = sorted(set(ALIASES.keys()), key=len, reverse=True)   # longest first = better matching
 
-DESIGN_PREFS = {c: {k: ARCHETYPES[n["a"]][k] for k in ("font", "scheme", "layout")}
+# per-niche palette overrides where the archetype mood doesn't fit the specific niche
+# (barber/tattoo sit in "beauty" but read masculine; landscaping/pool/solar sit in "trade" but read natural)
+PALETTE_OVERRIDE = {
+    "barber":      ["masculine", "industrial", "bold", "rugged", "dark"],
+    "tattoo":      ["bold", "industrial", "masculine", "creative", "dark"],
+    "yoga":        ["calm", "natural", "soft", "organic"],
+    "landscaping": ["natural", "earthy", "organic", "fresh"],
+    "pool":        ["natural", "fresh", "vibrant", "clean"],
+    "solar":       ["natural", "fresh", "tech", "clean"],
+    "auto":        ["masculine", "industrial", "bold", "rugged"],
+    "florist":     ["feminine", "soft", "natural", "elegant"],
+    "nails":       ["feminine", "vibrant", "playful", "beauty"],
+}
+DESIGN_PREFS = {c: {k: ARCHETYPES[n["a"]][k] for k in ("font", "scheme", "layout", "palette")}
                 for c, n in NICHES.items()}
+for _c, _mood in PALETTE_OVERRIDE.items():
+    if _c in DESIGN_PREFS:
+        DESIGN_PREFS[_c] = {**DESIGN_PREFS[_c], "palette": _mood}
 EFFECT_BIAS = {c: ARCHETYPES[n["a"]]["effects"] for c, n in NICHES.items()}
 COPY = {c: {"eyebrow": n["eyebrow"], "headlines": n["headlines"], "cta": n["cta"],
             "about": n["about"], "faq": n["faq"]} for c, n in NICHES.items()}

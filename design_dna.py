@@ -3,7 +3,8 @@ Design DNA engine — the "unique every time" core. NO LLM, NO cost.
 
 seed = hash(business_name + date) -> deterministic, independent pick from each pool
 (font pairing / color theme / layout archetype / animation pack / signature move / type scale).
-~14 x 16 x 8 x 6 x 8 x 4 ≈ 480k visual combos before copy -> sites never look the same.
+~122 x 24 x 8 x 6 x 8 x 4 ≈ 45M visual combos before copy -> sites never look the same.
+Palettes carry a `mood` tag; niches carry palette-mood prefs -> color matches niche, not random.
 
 Pools are real (Google Fonts + hex palettes) and feed the Stitch prompt template.
 Run `python design_dna.py` to print 3 sample DNAs and confirm they differ.
@@ -61,24 +62,35 @@ def _load_font_pack():
 _load_font_pack()
 
 
-# ── COLOR THEMES (60/30/10 bg/primary/accent). Mix of light, dark, bold, vibrant ──
+# ── COLOR THEMES (60/30/10 bg/primary/accent). Each carries a `mood` tag the niche
+#    registry matches on, so roofing→masculine/industrial not feminine (see NICHE_PREFS.palette). ──
 PALETTES = [
-    {"name": "warm sand", "scheme": "light", "bg": "#fff8f4", "surface": "#fdf2ec", "primary": "#8a4853", "accent": "#56642b", "text": "#1f1b17", "muted": "#7a6e6a", "border": "rgba(138,72,83,0.12)"},
-    {"name": "ink & lime", "scheme": "dark", "bg": "#0e0f0c", "surface": "#17190f", "primary": "#e6f37a", "accent": "#b6ff3d", "text": "#f4f5ee", "muted": "#9a9b8e", "border": "rgba(230,243,122,0.14)"},
-    {"name": "midnight teal", "scheme": "dark", "bg": "#07111a", "surface": "#0d1c28", "primary": "#3fd2c7", "accent": "#ffb347", "text": "#eaf6f7", "muted": "#7d97a1", "border": "rgba(63,210,199,0.16)"},
-    {"name": "cobalt pop", "scheme": "light", "bg": "#f4f6ff", "surface": "#e9edff", "primary": "#2433c9", "accent": "#ff4d6d", "text": "#10122b", "muted": "#5c6285", "border": "rgba(36,51,201,0.12)"},
-    {"name": "forest cream", "scheme": "light", "bg": "#f6f4ee", "surface": "#eceadd", "primary": "#1f4d36", "accent": "#c9772f", "text": "#161a15", "muted": "#6b7066", "border": "rgba(31,77,54,0.12)"},
-    {"name": "noir gold", "scheme": "dark", "bg": "#0c0b0a", "surface": "#161413", "primary": "#d9b35f", "accent": "#f0e6d2", "text": "#f4efe6", "muted": "#9a9186", "border": "rgba(217,179,95,0.16)"},
-    {"name": "blush plum", "scheme": "light", "bg": "#fdf4f7", "surface": "#f8e7ee", "primary": "#7a2e57", "accent": "#e0608a", "text": "#241019", "muted": "#7e6470", "border": "rgba(122,46,87,0.12)"},
-    {"name": "electric violet", "scheme": "dark", "bg": "#0b0814", "surface": "#150f24", "primary": "#9d6bff", "accent": "#28e0c4", "text": "#efeaff", "muted": "#8b82a6", "border": "rgba(157,107,255,0.16)"},
-    {"name": "clean clinical", "scheme": "light", "bg": "#f7fbfc", "surface": "#e9f4f6", "primary": "#0e7c86", "accent": "#1f9d55", "text": "#10201f", "muted": "#5f7375", "border": "rgba(14,124,134,0.12)"},
-    {"name": "tangerine slate", "scheme": "light", "bg": "#fbf8f5", "surface": "#f0ebe5", "primary": "#1c2733", "accent": "#ff6a1f", "text": "#15191f", "muted": "#69727c", "border": "rgba(28,39,51,0.12)"},
-    {"name": "carbon orange", "scheme": "dark", "bg": "#0d0d0e", "surface": "#1a1b1d", "primary": "#ff7a2f", "accent": "#f4f4f4", "text": "#f2f2f3", "muted": "#8d8f94", "border": "rgba(255,122,47,0.16)"},
-    {"name": "olive linen", "scheme": "light", "bg": "#f7f6f0", "surface": "#eceada", "primary": "#5c6234", "accent": "#9c4a2f", "text": "#1c1d16", "muted": "#73736a", "border": "rgba(92,98,52,0.12)"},
-    {"name": "deep sea coral", "scheme": "dark", "bg": "#06121a", "surface": "#0c1f2b", "primary": "#ff6b6b", "accent": "#4ee0d0", "text": "#e9f4f6", "muted": "#7b95a0", "border": "rgba(255,107,107,0.16)"},
-    {"name": "rose gold mono", "scheme": "light", "bg": "#fbf6f4", "surface": "#f4e7e2", "primary": "#b76e6e", "accent": "#3a3a3a", "text": "#211a18", "muted": "#80706c", "border": "rgba(183,110,110,0.12)"},
-    {"name": "neon mint dark", "scheme": "dark", "bg": "#0a0f0d", "surface": "#111a16", "primary": "#3ef0a0", "accent": "#ff5cf0", "text": "#eafff5", "muted": "#85998f", "border": "rgba(62,240,160,0.16)"},
-    {"name": "navy mustard", "scheme": "light", "bg": "#f6f5f1", "surface": "#e9e7df", "primary": "#1b2a4a", "accent": "#e0a82e", "text": "#13161f", "muted": "#646a78", "border": "rgba(27,42,74,0.12)"},
+    {"name": "warm sand", "scheme": "light", "mood": "warm inviting neutral hospitality", "bg": "#fff8f4", "surface": "#fdf2ec", "primary": "#8a4853", "accent": "#56642b", "text": "#1f1b17", "muted": "#7a6e6a", "border": "rgba(138,72,83,0.12)"},
+    {"name": "ink & lime", "scheme": "dark", "mood": "bold energetic masculine sporty", "bg": "#0e0f0c", "surface": "#17190f", "primary": "#e6f37a", "accent": "#b6ff3d", "text": "#f4f5ee", "muted": "#9a9b8e", "border": "rgba(230,243,122,0.14)"},
+    {"name": "midnight teal", "scheme": "dark", "mood": "tech premium calm trust", "bg": "#07111a", "surface": "#0d1c28", "primary": "#3fd2c7", "accent": "#ffb347", "text": "#eaf6f7", "muted": "#7d97a1", "border": "rgba(63,210,199,0.16)"},
+    {"name": "cobalt pop", "scheme": "light", "mood": "bold corporate playful trust", "bg": "#f4f6ff", "surface": "#e9edff", "primary": "#2433c9", "accent": "#ff4d6d", "text": "#10122b", "muted": "#5c6285", "border": "rgba(36,51,201,0.12)"},
+    {"name": "forest cream", "scheme": "light", "mood": "natural earthy calm organic", "bg": "#f6f4ee", "surface": "#eceadd", "primary": "#1f4d36", "accent": "#c9772f", "text": "#161a15", "muted": "#6b7066", "border": "rgba(31,77,54,0.12)"},
+    {"name": "noir gold", "scheme": "dark", "mood": "luxe premium masculine elegant", "bg": "#0c0b0a", "surface": "#161413", "primary": "#d9b35f", "accent": "#f0e6d2", "text": "#f4efe6", "muted": "#9a9186", "border": "rgba(217,179,95,0.16)"},
+    {"name": "blush plum", "scheme": "light", "mood": "feminine soft beauty elegant", "bg": "#fdf4f7", "surface": "#f8e7ee", "primary": "#7a2e57", "accent": "#e0608a", "text": "#241019", "muted": "#7e6470", "border": "rgba(122,46,87,0.12)"},
+    {"name": "electric violet", "scheme": "dark", "mood": "creative tech bold vibrant", "bg": "#0b0814", "surface": "#150f24", "primary": "#9d6bff", "accent": "#28e0c4", "text": "#efeaff", "muted": "#8b82a6", "border": "rgba(157,107,255,0.16)"},
+    {"name": "clean clinical", "scheme": "light", "mood": "clinical clean trust medical calm", "bg": "#f7fbfc", "surface": "#e9f4f6", "primary": "#0e7c86", "accent": "#1f9d55", "text": "#10201f", "muted": "#5f7375", "border": "rgba(14,124,134,0.12)"},
+    {"name": "tangerine slate", "scheme": "light", "mood": "energetic modern corporate bold", "bg": "#fbf8f5", "surface": "#f0ebe5", "primary": "#1c2733", "accent": "#ff6a1f", "text": "#15191f", "muted": "#69727c", "border": "rgba(28,39,51,0.12)"},
+    {"name": "carbon orange", "scheme": "dark", "mood": "industrial bold masculine rugged", "bg": "#0d0d0e", "surface": "#1a1b1d", "primary": "#ff7a2f", "accent": "#f4f4f4", "text": "#f2f2f3", "muted": "#8d8f94", "border": "rgba(255,122,47,0.16)"},
+    {"name": "olive linen", "scheme": "light", "mood": "natural earthy calm organic soft", "bg": "#f7f6f0", "surface": "#eceada", "primary": "#5c6234", "accent": "#9c4a2f", "text": "#1c1d16", "muted": "#73736a", "border": "rgba(92,98,52,0.12)"},
+    {"name": "deep sea coral", "scheme": "dark", "mood": "vibrant playful energetic", "bg": "#06121a", "surface": "#0c1f2b", "primary": "#ff6b6b", "accent": "#4ee0d0", "text": "#e9f4f6", "muted": "#7b95a0", "border": "rgba(255,107,107,0.16)"},
+    {"name": "rose gold mono", "scheme": "light", "mood": "feminine luxe beauty elegant", "bg": "#fbf6f4", "surface": "#f4e7e2", "primary": "#b76e6e", "accent": "#3a3a3a", "text": "#211a18", "muted": "#80706c", "border": "rgba(183,110,110,0.12)"},
+    {"name": "neon mint dark", "scheme": "dark", "mood": "creative vibrant tech bold", "bg": "#0a0f0d", "surface": "#111a16", "primary": "#3ef0a0", "accent": "#ff5cf0", "text": "#eafff5", "muted": "#85998f", "border": "rgba(62,240,160,0.16)"},
+    {"name": "navy mustard", "scheme": "light", "mood": "corporate professional trust masculine", "bg": "#f6f5f1", "surface": "#e9e7df", "primary": "#1b2a4a", "accent": "#e0a82e", "text": "#13161f", "muted": "#646a78", "border": "rgba(27,42,74,0.12)"},
+    # ── expansion (#2): fill masculine / industrial / corporate / clinical light gaps ──
+    {"name": "steel blue", "scheme": "light", "mood": "corporate masculine trust professional", "bg": "#f5f7f9", "surface": "#e7edf2", "primary": "#274156", "accent": "#3d8fd1", "text": "#131a20", "muted": "#5f6d78", "border": "rgba(39,65,86,0.12)"},
+    {"name": "graphite ember", "scheme": "dark", "mood": "industrial bold masculine rugged", "bg": "#101113", "surface": "#1b1d20", "primary": "#c8402e", "accent": "#e8b04b", "text": "#f1f0ee", "muted": "#8a8d92", "border": "rgba(200,64,46,0.16)"},
+    {"name": "hunter brass", "scheme": "dark", "mood": "luxe premium masculine natural", "bg": "#0b0f0c", "surface": "#141a15", "primary": "#2f6b46", "accent": "#c9a24b", "text": "#eef3ee", "muted": "#869088", "border": "rgba(47,107,70,0.16)"},
+    {"name": "terracotta clay", "scheme": "light", "mood": "warm natural earthy hospitality", "bg": "#fbf6f1", "surface": "#f2e6db", "primary": "#a24a2c", "accent": "#5c7a52", "text": "#211712", "muted": "#7d6a60", "border": "rgba(162,74,44,0.12)"},
+    {"name": "arctic sky", "scheme": "light", "mood": "clinical clean tech trust calm", "bg": "#f6fafc", "surface": "#e6f1f7", "primary": "#1a5f8f", "accent": "#12b3a6", "text": "#101c26", "muted": "#5c7180", "border": "rgba(26,95,143,0.12)"},
+    {"name": "burgundy cream", "scheme": "light", "mood": "premium elegant food warm", "bg": "#faf5f2", "surface": "#f0e3dd", "primary": "#6e1f2e", "accent": "#c68a3e", "text": "#1f1210", "muted": "#7a6560", "border": "rgba(110,31,46,0.12)"},
+    {"name": "charcoal amber", "scheme": "dark", "mood": "industrial masculine bold premium", "bg": "#0e0e0f", "surface": "#191a1c", "primary": "#e0a13a", "accent": "#4a90c2", "text": "#f1efec", "muted": "#8b8d91", "border": "rgba(224,161,58,0.16)"},
+    {"name": "sage stone", "scheme": "light", "mood": "calm natural soft organic feminine", "bg": "#f5f7f3", "surface": "#e7ede2", "primary": "#5a7259", "accent": "#b08968", "text": "#181d16", "muted": "#6d766a", "border": "rgba(90,114,89,0.12)"},
+    {"name": "plum orchid", "scheme": "dark", "mood": "feminine luxe beauty premium", "bg": "#120a12", "surface": "#1e131e", "primary": "#c06fb0", "accent": "#e6b980", "text": "#f3eaf1", "muted": "#9a879a", "border": "rgba(192,111,176,0.16)"},
 ]
 
 # ── LAYOUT ARCHETYPES ──────────────────────────────────────────────────────────
@@ -153,7 +165,8 @@ def pick(business_name, date=None, niche=None, extra_tags=None):
     return {
         "seed": seed,
         "font": _wpick(FONTS, seed, "font", lambda f: f.get("mood", ""), p.get("font", []), extra),
-        "palette": _wpick(PALETTES, seed, "palette", lambda x: x["name"] + " " + x["scheme"], p.get("scheme", []), extra),
+        "palette": _wpick(PALETTES, seed, "palette", lambda x: x["name"] + " " + x["scheme"] + " " + x.get("mood", ""),
+                          list(p.get("scheme", [])) + list(p.get("palette", [])), extra),
         "layout": _wpick(LAYOUTS, seed, "layout", lambda l: l["name"], p.get("layout", []), extra),
         "anim": ANIM_PACKS[_idx(seed, "anim", len(ANIM_PACKS))],
         "signature": SIGNATURES[_idx(seed, "sig", len(SIGNATURES))],
