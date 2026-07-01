@@ -35,9 +35,14 @@ Nothing broken / generic / AI-image ever deploys.
 | **Brief Compiler** | `brief_compiler.py` | Assembles Stitch prompt = SKELETON (booking spec + 16 JS fns + rules) + DNA + effects + copy + scout + data. `fixes` param → MUST FIX block. |
 | **Builder** | `stitch_client.py` | Stitch MCP call, **polls `get_screen` until booking JS present + bytes settle** (fixes partial HTML). |
 | **Technical team** | `qa.py` | Gates: structure, booking JS, images (no AI/stock), animation, a11y, links + optional Playwright booking click-through → scorecard {pass, score, grade, fixes}. |
-| **Orchestrator** | `orchestrator.py` | Per-business chain: build→Stitch→QA→regen-on-fail (feeds fixes back)→deploy. Sequential; `DRY_RUN=1` tests w/o credits. |
+| **Orchestrator** | `orchestrator.py` | Per-business chain: build→Stitch→QA→regen (SURGICAL patch first, full re-roll only if same gate stays broken)→deploy. Logs every attempt to ledger; records manifest. `DRY_RUN=1` tests w/o credits. |
 | **Businesses** | `businesses.py` | 3 rich fake businesses (coffee/gym/dental) w/ services/reviews/hours. |
-| **Cloud** | `.github/workflows/factory.yml` | Parallel matrix over businesses (max-parallel 4), headless QA, uploads results. Secrets: STITCH_KEY, NETLIFY_TOKEN (set). |
+| **Lead adapter** | `leads.py` | Any CSV (gmaps-lead-engine / enrich exports) → business dict. Tolerant column aliasing, niche auto-resolve. `from_csv(path)`. |
+| **QA Learner** | `ledger.py` | Appends every attempt to `out/qa_ledger.jsonl`; `penalties()` = per-DNA-value fail-rate. `design_dna.pick()` drops chronic failers (>55% fail, ≥3 samples) from the tier. Closed loop, no LLM. |
+| **Manifest** | `manifest.py` | `out/manifest.json` dedupe/resume — a shipped lead never rebuilds. Idempotent re-runs. |
+| **Scheduler** | `scheduler.py` | The autopilot: pull unbuilt leads → build BATCH → record → write DM-ready CSV. Cron/hands-off. `DRY_RUN=1` supported. |
+| **Outreach handoff** | `report_back.py` | Writes live URL + QA grade back to the lead CSV (`*_outreach.csv`); `dm_ready()` lists shipped previews. |
+| **Cloud** | `.github/workflows/factory.yml` (dispatch, parallel matrix) · `scheduler.yml` (daily cron, full chain, commits manifest+ledger back) | Secrets: STITCH_KEY, NETLIFY_TOKEN (set). |
 
 ## 4. THE NON-GENERIC ENGINE
 `design_dna` × `asset_lib` seeded by `hash(name+date)`:
@@ -60,11 +65,23 @@ Nothing broken / generic / AI-image ever deploys.
 - Stitch polling fix landed. Niche-weighting fixed (no more gym-gets-serif). Targeted regen proven (retry changed palette + injected MUST FIX). 42-niche registry proven (resolve + per-niche design/copy/effects).
 - Pushed: commits `834ddac` → `71a133e` → `c87865e`.
 
+## 6b. ✅ AUTOPILOT LAYER — BUILT + DRY-RUN PROVEN (2026-07-02)
+The self-driving loop (was "missing roles") is now built & tested end-to-end at 0 credits:
+- **Lead adapter** (`leads.py`) — parsed a gmaps-ish 5-lead CSV → business dicts, niches auto-resolved.
+- **QA Learner** (`ledger.py`) — logs every attempt; **proven** it demotes a chronic failer (poisoned palette penalty 0.9 → pick moved to a still-niche-correct alt).
+- **Surgical regen** — first regen keeps the good DNA & patches only the failing gate ("SURGICAL FIX" block); escalates to full re-roll only if the same gate stays broken.
+- **Manifest dedupe** (`manifest.py`) — run 2 of the same batch built **0** (all shipped). Idempotent.
+- **Scheduler** (`scheduler.py`) — DRY-RUN batch: 5 leads → 5 A-grade → shipped → DM-ready CSV, one command, no human trigger.
+- **Outreach handoff** (`report_back.py`) — appended `preview_url/grade/score/status/built_at` back to the lead CSV.
+- **Cloud cron** (`scheduler.yml`) — daily, runs the full chain, commits manifest+ledger back so dedupe/learning persist.
+- **Bonus fix** — `niches.resolve()` now prefers specific trades over generic parents ("Roofing contractor"→roofing, "HVAC contractor"→hvac; plain "Contractor"→contractor).
+
 ## 7. ❌ LEFT / NOT DONE
-1. **ONE REAL STITCH RUN** — everything proven on *sample* HTML, NOT live Stitch output. Biggest unknown. To confirm: trigger `factory.yml` (Actions tab) or run `orchestrator.py` locally (needs `.stitch_key` + `.netlify_token`, ~4-5 credits/site). Run stitch scripts with sandbox OFF (RAM).
+1. **ONE REAL STITCH RUN** *(still the only real blocker)* — everything above proven on *sample* HTML, NOT live Stitch output. To confirm: `DRY_RUN=` unset `LEADS_CSV=leads.csv ./venv/bin/python scheduler.py`, or trigger `scheduler.yml`/`factory.yml` (Actions). Needs `.stitch_key`+`.netlify_token`, ~4-5 credits/site, sandbox OFF (RAM).
 2. **User's 100 reference `.md`** — not provided yet. Drop in `references/` (3 samples are placeholders). Scout auto-tags on load.
-3. **Google Sheets intake** — parked (last step). Real scheduled mill needs it (autopilot.yml cron exists, needs SHEET_ID + GCP_SA_JSON secrets).
-4. **Real prospect data** — currently 3 fake businesses. Real outreach scrapes name/services/reviews/hours per lead (feeds `businesses.py` shape). Ties to gmaps-lead-engine.
+3. **Real lead CSV** — drop a `leads.csv` (any columns; `leads.py` maps them) to feed real prospects instead of the 3 fakes. Ties to gmaps-lead-engine output.
+4. **Throughput (3.6)** — 100/day vs Stitch throttle; matrix ≤4 parallel + poll ~5min/site may need chunked scheduling / credit headroom.
+5. **Google Sheets intake (optional)** — `autopilot.py`/`sheets_client.py` path still there; CSV via `leads.py` is now the simpler default.
 
 ## 8. ⚠️ NEEDS IMPROVEMENT (ranked)
 1. ✅ **DONE (2026-07-02)** — Palettes now mood-tagged; niches carry `palette` mood prefs. `design_dna.PALETTES` each has `mood`; `niches.ARCHETYPES[*].palette` + `niches.PALETTE_OVERRIDE` (barber/tattoo/landscaping/pool/solar/auto/yoga/florist/nails). `_wpick` keys palette on name+scheme+mood. Verified: roofing→navy mustard, gym→ink&lime, dental→clinical, medspa→blush plum, barber→graphite ember, landscaping→olive linen.

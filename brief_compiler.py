@@ -104,15 +104,19 @@ def _data_block(b):
     return "\n".join(L)
 
 
-def _fix_block(fixes):
+def _fix_block(fixes, surgical=False):
     if not fixes:
         return ""
-    return ("MUST FIX — the previous attempt FAILED automated QA. Address ALL of these, they are "
-            "mandatory:\n" + "\n".join(f"- {f}" for f in fixes))
+    head = ("SURGICAL FIX — the previous attempt was CLOSE but failed automated QA on the items below. "
+            "KEEP the existing design, layout, colors, fonts, copy and all passing sections EXACTLY as they were. "
+            "Change ONLY what is needed to satisfy these — do not redesign:") if surgical else (
+            "MUST FIX — the previous attempt FAILED automated QA. Address ALL of these, they are mandatory:")
+    return head + "\n" + "\n".join(f"- {f}" for f in fixes)
 
 
-def build_prompt(b, date=None, salt="", fixes=None):
-    """salt re-seeds the DNA on a regen so a failed look changes. fixes = QA feedback to force-correct."""
+def build_prompt(b, date=None, salt="", fixes=None, surgical=False):
+    """salt re-seeds the DNA on a regen so a failed look changes (full re-roll).
+    surgical=True keeps the same DNA (pass salt="") and patches only the failing gates."""
     date = (date or datetime.date.today().isoformat()) + (f"#{salt}" if salt else "")
     niche = b.get("niche")
     seed_name = b["name"] + (f"#{salt}" if salt else "")
@@ -124,7 +128,7 @@ def build_prompt(b, date=None, salt="", fixes=None):
     copy = copywriter.pick(b, seed=seed_name)
     parts = [SKELETON]
     if fixes:
-        parts.append(_fix_block(fixes))
+        parts.append(_fix_block(fixes, surgical=surgical))
     if refs:
         parts.append(reference_scout.to_block(refs))
     parts += [design_dna.to_prompt_block(ds), asset_lib.compose_block(bundle),

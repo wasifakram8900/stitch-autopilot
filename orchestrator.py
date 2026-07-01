@@ -23,6 +23,8 @@ load_dotenv(os.path.join(HERE, ".env"))
 import businesses
 import brief_compiler
 import qa
+import ledger
+import manifest
 
 DEVICE = os.environ.get("DEVICE", "DESKTOP")
 MAX_ATTEMPTS = int(os.environ.get("MAX_ATTEMPTS", "2"))
@@ -67,11 +69,19 @@ def process(idx, total, b):
     print(f"\n{'='*66}\n[{idx}/{total}] {b['name']}  ({b.get('niche','')})\n{'='*66}", flush=True)
     attempts = []
     last_fixes = None
+    prev_fail = None      # hard gates that failed on the previous attempt
+    escalate = False      # True -> next regen re-rolls the whole design (surgical didn't clear it)
     for attempt in range(1, MAX_ATTEMPTS + 1):
-        salt = "" if attempt == 1 else f"r{attempt}"
-        brief = brief_compiler.build_prompt(b, salt=salt, fixes=last_fixes)
+        if attempt == 1:
+            salt, surgical = "", False
+        else:
+            surgical = not escalate               # first regen = surgical patch (keep the good design)
+            salt = "" if surgical else f"r{attempt}"   # escalate = full re-roll with a new seed
+        brief = brief_compiler.build_prompt(b, salt=salt, fixes=last_fixes, surgical=surgical)
         ds = brief["ds"]
-        print(f"  attempt {attempt}: {ds['font']['head']}/{ds['font']['body']} · {ds['palette']['name']} · "
+        mode = "attempt 1" if attempt == 1 else (f"attempt {attempt} (surgical patch)" if surgical
+                                                 else f"attempt {attempt} (full re-roll)")
+        print(f"  {mode}: {ds['font']['head']}/{ds['font']['body']} · {ds['palette']['name']} · "
               f"{ds['layout']['name']} · {ds['anim']['name']}  (prompt {len(brief['prompt'])} ch)", flush=True)
 
         out = _generate(brief["prompt"], b["name"][:60])
@@ -81,10 +91,11 @@ def process(idx, total, b):
         open(local, "w").write(html)
 
         card = qa.scorecard(html, brief["markers"], path=local, headless=HEADLESS)
+        ledger.record(b["name"], b.get("niche"), ds, card)   # QA-learner: log every attempt
         print(f"  QA: pass={card['pass']} score={card['score']} grade={card['grade']} hard={card['hard']}", flush=True)
         for f in card["fixes"]:
             print(f"      ! {f}", flush=True)
-        attempts.append({"attempt": attempt, "score": card["score"], "grade": card["grade"],
+        attempts.append({"attempt": attempt, "surgical": surgical, "score": card["score"], "grade": card["grade"],
                          "pass": card["pass"], "hard": card["hard"], "fixes": card["fixes"],
                          "design": {"font": f"{ds['font']['head']}/{ds['font']['body']}",
                                     "palette": ds["palette"]["name"], "layout": ds["layout"]["name"]}})
@@ -94,11 +105,16 @@ def process(idx, total, b):
             return {"name": b["name"], "status": "Done", "url": url, "site_id": sid,
                     "score": card["score"], "grade": card["grade"], "attempts": attempts,
                     "local": local, "seconds": round(time.time() - t0)}
+        cur_fail = {k for k, v in card["hard"].items() if not v}
+        # if a surgical patch didn't clear the same gate, escalate the NEXT regen to a full re-roll
+        escalate = bool(surgical and prev_fail and (cur_fail & prev_fail))
+        prev_fail = cur_fail
         last_fixes = list(card["fixes"])
         amiss = card["gates"]["animation"]["missing"]
         if amiss:
             last_fixes.append("these effects/animations MUST appear (exact class/fn names): " + ", ".join(amiss))
-        print(f"  ✗ failed QA — {'regenerating with fixes + new design' if attempt < MAX_ATTEMPTS else 'NOT deploying'}", flush=True)
+        nxt = ("surgical patch" if not escalate else "full re-roll") if attempt < MAX_ATTEMPTS else None
+        print(f"  ✗ failed QA — {'regenerating (' + nxt + ')' if nxt else 'NOT deploying'}", flush=True)
 
     return {"name": b["name"], "status": "Failed QA — not deployed", "url": None,
             "score": attempts[-1]["score"], "grade": attempts[-1]["grade"],
@@ -116,11 +132,13 @@ def main():
     results = []
     for i, b in items:
         try:
-            results.append(process(i, total, b))
+            r = process(i, total, b)
         except Exception as e:
             print(f"  !! ERROR: {e}", flush=True)
             traceback.print_exc()
-            results.append({"name": b["name"], "status": f"Error: {str(e)[:160]}", "url": None})
+            r = {"name": b["name"], "status": f"Error: {str(e)[:160]}", "url": None}
+        manifest.record(b, r)   # dedupe/resume ledger
+        results.append(r)
 
     out_json = os.path.join(HERE, "out", "factory_results.json")
     os.makedirs(os.path.dirname(out_json), exist_ok=True)

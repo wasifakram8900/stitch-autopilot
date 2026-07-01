@@ -5,8 +5,13 @@ Updated 2026-07-02 (after palette-mood fix).
 ---
 
 ## 0. WHERE WE ARE (one line)
-Full agent chain **built + DRY-RUN A-grade**, palettes now niche-correct. **Never run on live Stitch.**
-Gap to autopilot = (1) one real run to trust the output, (2) auto-fed prospect data, (3) a scheduled self-driving loop.
+Full agent chain + **the whole self-driving loop built & DRY-RUN proven** (lead adapter, QA-learner ledger,
+surgical regen, manifest dedupe, scheduler, outreach handoff, daily cron). **Only gap left = one real Stitch run.**
+
+> **UPDATE 2026-07-02 (autopilot layer):** Phases 2.1, 3.1, 3.2, 3.3, 3.4, 3.5 are now BUILT + tested at 0 credits.
+> New files: `leads.py`, `ledger.py`, `manifest.py`, `scheduler.py`, `report_back.py`, `.github/workflows/scheduler.yml`.
+> Proven: 5-lead CSV → 5 A-grade → shipped → DM-ready CSV; re-run built 0 (dedupe); poisoned palette got demoted (learner);
+> `niches.resolve` specificity fixed (roofing/hvac vs contractor). **Do next: 1.1 real Stitch run** (below).
 
 ---
 
@@ -121,13 +126,13 @@ The current loop is **open** (build → gate → ship, forgets everything). Auto
 ---
 
 ## 4. PRIORITIZED BACKLOG (do in this order)
-1. **1.1 real Stitch run** — unblocks trust. *Nothing else matters until this is green.*
-2. **2.1 lead adapter** — turns demo into pipeline.
-3. **3.1 scheduler + 3.5 dedupe** — makes it hands-off.
-4. **3.2 QA ledger** — makes it improve for free.
-5. **3.4 outreach handoff** — closes the loop to money.
-6. **3.3 surgical regen** — saves credits.
-7. Phase 4 polish.
+1. **1.1 real Stitch run** — unblocks trust. *Nothing else matters until this is green.* ← **ONLY ITEM LEFT of the core**
+2. ✅ **2.1 lead adapter** — `leads.py` (DONE 2026-07-02).
+3. ✅ **3.1 scheduler + 3.5 dedupe** — `scheduler.py` + `manifest.py` (DONE).
+4. ✅ **3.2 QA ledger** — `ledger.py`, wired into `design_dna.pick` (DONE).
+5. ✅ **3.4 outreach handoff** — `report_back.py` (DONE).
+6. ✅ **3.3 surgical regen** — orchestrator surgical-patch-then-escalate (DONE).
+7. **2.2** drop 100 reference `.md` · **3.6** 100/day throughput · Phase 4 polish.
 
 ---
 

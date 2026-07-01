@@ -145,13 +145,30 @@ def _idx(seed, salt, n):
 NICHE_PREFS = niches.DESIGN_PREFS
 
 
-def _wpick(items, seed, salt, key_fn, prefs, extra):
+PENALTY_CUTOFF = 0.5   # drop a value from the tier once its QA fail-rate*strength exceeds this
+
+
+def _penalties():
+    """QA-learner feedback: chronic failers to avoid. Guarded so design_dna still works standalone."""
+    try:
+        import ledger
+        return ledger.penalties()
+    except Exception:
+        return {}
+
+
+def _wpick(items, seed, salt, key_fn, prefs, extra, penalty_fn=None):
     """Pick from items, preferring those whose text matches niche prefs + extra style bias.
-    Falls back to pure seed pick when nothing matches (no niche) → variety preserved."""
+    Falls back to pure seed pick when nothing matches (no niche) → variety preserved.
+    penalty_fn(item)->0..1 (from the QA ledger) drops chronic failers from the top tier,
+    but ONLY when alternatives remain, so niche correctness + variety are never sacrificed."""
     want = [w.lower() for w in (list(prefs) + list(extra))]
     scored = [(sum(1 for w in want if w in key_fn(it).lower()), it) for it in items]
     mx = max(s for s, _ in scored)
     tier = [it for s, it in scored if s == mx]
+    if penalty_fn:
+        clean = [it for it in tier if penalty_fn(it) < PENALTY_CUTOFF]
+        tier = clean or tier
     return tier[_idx(seed, salt, len(tier))]
 
 
@@ -162,12 +179,16 @@ def pick(business_name, date=None, niche=None, extra_tags=None):
     key = niches.resolve(niche)
     p = NICHE_PREFS.get(key, {})
     extra = extra_tags or []
+    pen = _penalties()
+    font_pen = lambda f: pen.get("font", {}).get(f"{f['head']}/{f['body']}", 0.0)
+    pal_pen = lambda x: pen.get("palette", {}).get(x["name"], 0.0)
+    lay_pen = lambda l: pen.get("layout", {}).get(l["name"], 0.0)
     return {
         "seed": seed,
-        "font": _wpick(FONTS, seed, "font", lambda f: f.get("mood", ""), p.get("font", []), extra),
+        "font": _wpick(FONTS, seed, "font", lambda f: f.get("mood", ""), p.get("font", []), extra, font_pen),
         "palette": _wpick(PALETTES, seed, "palette", lambda x: x["name"] + " " + x["scheme"] + " " + x.get("mood", ""),
-                          list(p.get("scheme", [])) + list(p.get("palette", [])), extra),
-        "layout": _wpick(LAYOUTS, seed, "layout", lambda l: l["name"], p.get("layout", []), extra),
+                          list(p.get("scheme", [])) + list(p.get("palette", [])), extra, pal_pen),
+        "layout": _wpick(LAYOUTS, seed, "layout", lambda l: l["name"], p.get("layout", []), extra, lay_pen),
         "anim": ANIM_PACKS[_idx(seed, "anim", len(ANIM_PACKS))],
         "signature": SIGNATURES[_idx(seed, "sig", len(SIGNATURES))],
         "type_scale": TYPE_SCALES[_idx(seed, "type", len(TYPE_SCALES))],

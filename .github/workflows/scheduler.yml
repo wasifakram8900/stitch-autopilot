@@ -1,0 +1,84 @@
+name: scheduler
+
+# Phase 3.1 self-driving autopilot. Cron wakes, pulls the next batch of UNBUILT leads,
+# runs the FULL agent chain per lead (design -> Stitch -> QA gates + headless booking ->
+# regen/surgical -> Netlify), then commits manifest + qa_ledger + outreach CSV back so
+# dedupe and the QA-learner persist across runs. No human trigger.
+#
+# Leads source: commit a `leads.csv` (any columns — leads.py maps them). Absent -> the
+# 3 built-in fakes. Secrets needed: STITCH_KEY, NETLIFY_TOKEN.
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"       # every 10 min (GitHub may delay under load; min interval 5)
+  workflow_dispatch:
+    inputs:
+      batch:
+        description: "Max sites to build this run"
+        required: false
+        default: "25"
+
+concurrency:
+  group: scheduler                # never two batches at once (keeps manifest consistent)
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    permissions:
+      contents: write             # to commit manifest/ledger back
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: |
+          pip install -r requirements.txt
+          pip install playwright
+          playwright install --with-deps chromium
+
+      - name: Write secret files
+        run: |
+          printf '%s' "${STITCH_KEY}"    > .stitch_key
+          printf '%s' "${NETLIFY_TOKEN}" > .netlify_token
+        env:
+          STITCH_KEY:    ${{ secrets.STITCH_KEY }}
+          NETLIFY_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
+
+      - name: Build asset packs (offline)
+        run: python import_assets.py
+
+      - name: Autopilot batch (dedupe -> build -> QA -> deploy -> handoff)
+        env:
+          DEVICE:   DESKTOP
+          HEADLESS: "1"
+          MAX_ATTEMPTS: "2"
+          BATCH:    ${{ github.event.inputs.batch || '3' }}   # cron paces at 3/run; dispatch can override
+          LEADS_CSV: leads.csv          # auto-falls back to built-in businesses if the file is absent
+        run: |
+          [ -f leads.csv ] || echo "no leads.csv committed — falling back to built-in businesses"
+          python -u scheduler.py
+
+      - name: Persist manifest + ledger + outreach handoff
+        if: always()
+        run: |
+          git config user.name  "stitch-autopilot[bot]"
+          git config user.email "actions@users.noreply.github.com"
+          git add -f out/manifest.json out/qa_ledger.jsonl leads_outreach.csv 2>/dev/null || true
+          git commit -m "autopilot: batch $(date -u +%F) [skip ci]" || echo "nothing to commit"
+          git push || echo "nothing to push"
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: autopilot-batch
+          path: |
+            out/manifest.json
+            out/qa_ledger.jsonl
+            out/factory/**/index.html
+            leads_outreach.csv

@@ -358,6 +358,13 @@ for _canon, _n in NICHES.items():
 
 NICHE_WORDS = sorted(set(ALIASES.keys()), key=len, reverse=True)   # longest first = better matching
 
+# Generic "parent" keywords that are longer than the specific trade they contain
+# (e.g. "Roofing contractor" -> roofing, not contractor). These only match when NO
+# specific keyword did, so "HVAC contractor"->hvac but plain "Contractor"->contractor.
+GENERIC_WORDS = {"contractor", "services", "service", "company", "professional", "specialist"}
+SPECIFIC_WORDS = [w for w in NICHE_WORDS if w not in GENERIC_WORDS]
+GENERIC_ORDERED = [w for w in NICHE_WORDS if w in GENERIC_WORDS]
+
 # per-niche palette overrides where the archetype mood doesn't fit the specific niche
 # (barber/tattoo sit in "beauty" but read masculine; landscaping/pool/solar sit in "trade" but read natural)
 PALETTE_OVERRIDE = {
@@ -382,11 +389,15 @@ COPY = {c: {"eyebrow": n["eyebrow"], "headlines": n["headlines"], "cta": n["cta"
 
 
 def resolve(text):
-    """Map any niche string to a canonical key (longest keyword match wins). '' if none."""
+    """Map any niche string to a canonical key. Specific trades win over generic parents
+    (longest-first within each tier), so 'Roofing contractor' -> roofing, 'Contractor' -> contractor."""
     if not text:
         return ""
     low = text.lower()
-    for kw in NICHE_WORDS:           # longest-first
+    for kw in SPECIFIC_WORDS:        # specific keywords first, longest-first
+        if kw in low:
+            return ALIASES[kw]
+    for kw in GENERIC_ORDERED:       # generic parents only if nothing specific matched
         if kw in low:
             return ALIASES[kw]
     return ""
