@@ -9,8 +9,12 @@ name: scheduler
 # 3 built-in fakes. Secrets needed: STITCH_KEY, NETLIFY_TOKEN.
 
 on:
-  schedule:
-    - cron: "*/10 * * * *"       # every 10 min (GitHub may delay under load; min interval 5)
+  # ⚠️ CRON PAUSED 2026-07-02 — first live run shipped 0/3 (real Stitch output fails QA:
+  # missing sections/booking JS + headless booking gate never passes). Leaving the 10-min
+  # cron on would burn ~15 Stitch credits/run for ZERO shipped sites. RE-ENABLE by
+  # uncommenting the two lines below ONCE a real Stitch build passes QA (see RUN-REPORT-2026-07-02.md).
+  # schedule:
+  #   - cron: "*/10 * * * *"
   workflow_dispatch:
     inputs:
       batch:
