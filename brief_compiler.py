@@ -12,6 +12,8 @@ import design_dna
 import asset_lib
 import copywriter
 import reference_scout
+import playbooks
+import images_agent
 
 asset_lib.load_external()   # merge bulk-imported packs once
 
@@ -40,8 +42,10 @@ padding -> 20px mobile; section padding 120px -> 64px mobile; card radius 16px; 
 HOME SECTIONS, in this exact order (every one present):
   1 STICKY NAVBAR: logo (showPage('home')) + nav links (.nav-link smooth-scroll to sections) + primary
     "Book Now" button -> showPage('book'); mobile hamburger -> full-screen overlay via toggleMobileMenu().
-  2 HERO: min-height 100vh, centered; eyebrow badge with the star rating; huge H1 (word-split animated);
-    tagline; two CTAs (filled "Book Appointment"->showPage('book') + ghost "View Services" scroll). NO photo.
+  2 HERO: min-height 100vh; eyebrow badge with the star rating; huge H1 (word-split animated) whose text is
+    the EXACT "HERO HEADLINE" from the COPY section (do NOT invent your own headline); tagline/subtext;
+    two CTAs (filled "Book Appointment"->showPage('book') + ghost "View Services" scroll). Follow the ART
+    DIRECTION hero treatment (use the provided hero PHOTO as a full-bleed background when one is given).
   3 ABOUT: label + h2 + 2-3 sentence bio + one stat callout. scroll reveal.
   4 SERVICES + PRICING: label + h2 + responsive grid, ONE CARD PER SERVICE from DATA (icon, exact name,
     short desc, exact price, duration, "Book This"->showPage('book')).
@@ -72,9 +76,11 @@ BOOKING PAGE id="page-book" (same file, full-page view NOT a modal, same fonts/c
 ALL JS FUNCTIONS required (implement every one): %s; on DOMContentLoaded ->
   splitWords(#page-home h1), initReveal(), renderCalendar(now), lucide.createIcons().
 
-IMAGES — NON-NEGOTIABLE: this is a NO-PHOTO premium build. Use styled CSS/gradient/icon visuals only.
-  NEVER lh3.googleusercontent.com/aida-public, NEVER gstatic.com/labs-code, NEVER unsplash/picsum/placeholder
-  services, NEVER invent an image URL, NEVER generate AI images. Any image slot -> styled placeholder div.
+IMAGES: use the REAL photo URLs given in the IMAGES section below (real <img>, object-fit:cover, lazy-load,
+  meaningful alt). Those are the ONLY images allowed. NEVER AI-generated images (googleusercontent/aida-public,
+  gstatic.com/labs-code), NEVER placeholder services (picsum/placehold/dummyimage), NEVER invent an image URL.
+  If the IMAGES section says no photo is available, build a premium CSS-art hero (layered gradient + texture),
+  never a flat color box. No logo images.
 
 OUTPUT RULES: single index.html; Lucide + Google Fonts in <head>; all JS at bottom before </body>; mobile-first
   works at 375px; every button has a real onclick; booking is full-page not modal; calendar navigates months;
@@ -126,15 +132,18 @@ def build_prompt(b, date=None, salt="", fixes=None, surgical=False):
     ds = design_dna.pick(b["name"], date=date, niche=niche, extra_tags=bias)
     bundle = asset_lib.bundle(b["name"], date=date, niche=niche)
     copy = copywriter.pick(b, seed=seed_name)
+    pb = playbooks.get(niche)                       # designer brain: per-niche art direction
+    imgs = images_agent.resolve(b, ds)              # real photos: lead's own -> curated stock
     parts = [SKELETON]
     if fixes:
         parts.append(_fix_block(fixes, surgical=surgical))
+    parts.append(playbooks.to_block(pb, b))         # ART DIRECTION frames everything below
     if refs:
         parts.append(reference_scout.to_block(refs))
     parts += [design_dna.to_prompt_block(ds), asset_lib.compose_block(bundle),
-              copywriter.to_block(copy, b), _data_block(b)]
+              images_agent.to_block(imgs, b, ds), copywriter.to_block(copy, b), _data_block(b)]
     markers = list(dict.fromkeys(asset_lib.markers(bundle) + CORE_FUNCS))
-    return {"prompt": "\n\n".join(parts), "ds": ds, "bundle": bundle,
+    return {"prompt": "\n\n".join(parts), "ds": ds, "bundle": bundle, "images": imgs,
             "markers": markers, "copy": copy, "refs": [r["name"] for r in refs]}
 
 

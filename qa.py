@@ -28,10 +28,12 @@ SECTIONS = {
 BOOKING_CORE = ["showPage", "renderCalendar", "confirmBooking", "toggleService",
                 "selectDate", "selectTime", "updateSummary"]
 BOOKING_FULL = BOOKING_CORE + ["prevMonth", "nextMonth", "resetBooking", "splitWords", "initReveal"]
-# banned image sources (AI / stock / placeholder) — must be ZERO
-BANNED_IMG = [r"googleusercontent\.com/aida", r"gstatic\.com/labs-code", r"unsplash\.com",
+# banned image sources — must be ZERO. Curated stock (Unsplash/Pexels CDN) is now ALLOWED
+# (intentional art-directed photos via images_agent); only AI-generated + lazy placeholder
+# services stay banned.
+BANNED_IMG = [r"googleusercontent\.com/aida", r"gstatic\.com/labs-code",
               r"picsum\.photos", r"placeholder\.com", r"placehold\.co", r"via\.placeholder",
-              r"loremflickr", r"dummyimage"]
+              r"loremflickr", r"dummyimage", r"source\.unsplash\.com"]
 
 
 def _has(html, pats):
