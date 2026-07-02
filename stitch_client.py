@@ -8,6 +8,7 @@ from datetime import timedelta
 import requests
 from mcp.client.streamable_http import streamablehttp_client
 from mcp import ClientSession
+import qa
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 URL = "https://stitch.googleapis.com/mcp"
@@ -44,15 +45,18 @@ def _design_screen(structured):
     return None
 
 
-# Booking-page JS markers. ALL present = Stitch's agent finished wiring the booking flow
-# (it returns HTML immediately but PARTIAL, then keeps building — we must poll past that).
-_BOOKING_MARKERS = ("showPage", "renderCalendar", "confirmBooking", "toggleService")
+# Stitch returns HTML immediately but PARTIAL, then keeps building — we must poll past that.
+# "Complete" = the build would clear the real static HARD gates (structure + all booking JS +
+# clean images). Reusing qa.py as the one source of truth means we poll until it's deploy-ready,
+# not until 4 arbitrary markers appear (the 1st live run returned partial builds on 4-marker check).
 POLL_EVERY = int(os.environ.get("STITCH_POLL_EVERY", "25"))
-POLL_TRIES = int(os.environ.get("STITCH_POLL_TRIES", "12"))
+POLL_TRIES = int(os.environ.get("STITCH_POLL_TRIES", "16"))   # ~6.7 min max (was 12 / 5 min)
 
 
 def _complete(html):
-    return bool(html) and all(m in html for m in _BOOKING_MARKERS)
+    if not html:
+        return False
+    return qa.structure(html)["ok"] and qa.booking(html)["ok"] and qa.images(html)["ok"]
 
 
 async def _fetch_screen_html(s, pid, sid, key):
