@@ -87,11 +87,21 @@ async def _generate(prompt, device, title):
             args = {"projectId": pid, "prompt": prompt}
             if device:                       # UPPERCASE only: "DESKTOP" / "MOBILE"
                 args["deviceType"] = device.upper()
+            model = os.environ.get("STITCH_MODEL", "GEMINI_3_1_PRO")   # PRO = the good model the UI uses
+            if model:
+                args["modelId"] = model
 
             res = await s.call_tool("generate_screen_from_text", args, read_timeout_seconds=timedelta(seconds=900))
             if res.isError:
                 txt = " ".join(getattr(b, "text", "") or "" for b in res.content)
-                raise RuntimeError(f"generate failed: {txt[:300]}")
+                # if the modelId enum name is off, retry once on the default model rather than hard-fail
+                if "modelId" in args and re.search(r"model|invalid argument|unknown", txt, re.I):
+                    print(f"     modelId '{model}' rejected ({txt[:80]}); retrying on default model", flush=True)
+                    args.pop("modelId")
+                    res = await s.call_tool("generate_screen_from_text", args, read_timeout_seconds=timedelta(seconds=900))
+                if res.isError:
+                    txt = " ".join(getattr(b, "text", "") or "" for b in res.content)
+                    raise RuntimeError(f"generate failed: {txt[:300]}")
 
             screen = _design_screen(res.structuredContent)
             sid = (screen or {}).get("id")

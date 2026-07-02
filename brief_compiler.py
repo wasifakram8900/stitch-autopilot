@@ -134,14 +134,20 @@ def build_prompt(b, date=None, salt="", fixes=None, surgical=False):
     copy = copywriter.pick(b, seed=seed_name)
     pb = playbooks.get(niche)                       # designer brain: per-niche art direction
     imgs = images_agent.resolve(b, ds)              # real photos: lead's own -> curated stock
-    parts = [SKELETON]
+    # DESIGN-FIRST ordering: lead with the creative vision so Stitch's design agent engages,
+    # THEN give the technical/booking contract. (Front-loading the JS spec made it form-fill, not design.)
+    opener = (f"Design a stunning, award-winning ($10k-agency-quality) single-page website for "
+              f"{b['name']}, a {b.get('type') or niche or 'local business'}. Make it genuinely beautiful and "
+              f"premium — bold, modern, memorable, with real photography and strong art direction. "
+              f"Prioritise DESIGN and IMAGERY. It must ALSO include the working booking system specified below.")
+    parts = [opener, playbooks.to_block(pb, b)]     # ART DIRECTION first
     if fixes:
         parts.append(_fix_block(fixes, surgical=surgical))
-    parts.append(playbooks.to_block(pb, b))         # ART DIRECTION frames everything below
+    parts += [design_dna.to_prompt_block(ds), asset_lib.compose_block(bundle),
+              images_agent.to_block(imgs, b, ds), copywriter.to_block(copy, b)]
     if refs:
         parts.append(reference_scout.to_block(refs))
-    parts += [design_dna.to_prompt_block(ds), asset_lib.compose_block(bundle),
-              images_agent.to_block(imgs, b, ds), copywriter.to_block(copy, b), _data_block(b)]
+    parts += [SKELETON, _data_block(b)]             # technical/booking contract AFTER the vision
     markers = list(dict.fromkeys(asset_lib.markers(bundle) + CORE_FUNCS))
     return {"prompt": "\n\n".join(parts), "ds": ds, "bundle": bundle, "images": imgs,
             "markers": markers, "copy": copy, "refs": [r["name"] for r in refs]}

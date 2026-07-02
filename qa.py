@@ -28,12 +28,15 @@ SECTIONS = {
 BOOKING_CORE = ["showPage", "renderCalendar", "confirmBooking", "toggleService",
                 "selectDate", "selectTime", "updateSummary"]
 BOOKING_FULL = BOOKING_CORE + ["prevMonth", "nextMonth", "resetBooking", "splitWords", "initReveal"]
-# banned image sources — must be ZERO. Curated stock (Unsplash/Pexels CDN) is now ALLOWED
-# (intentional art-directed photos via images_agent); only AI-generated + lazy placeholder
-# services stay banned.
-BANNED_IMG = [r"googleusercontent\.com/aida", r"gstatic\.com/labs-code",
-              r"picsum\.photos", r"placeholder\.com", r"placehold\.co", r"via\.placeholder",
+# banned image sources — must be ZERO. Stitch's OWN generated imagery (googleusercontent/aida,
+# gstatic labs) and curated stock (Unsplash/Pexels CDN) are now ALLOWED — real photos are what
+# make a site look premium, and Stitch adds good ones. Only LAZY PLACEHOLDER services stay banned
+# (those are the actual "cheap/broken" tell). Set IMAGES_STRICT=1 to also ban AI-generated again.
+import os as _os
+BANNED_IMG = [r"picsum\.photos", r"placeholder\.com", r"placehold\.co", r"via\.placeholder",
               r"loremflickr", r"dummyimage", r"source\.unsplash\.com"]
+if _os.environ.get("IMAGES_STRICT", "") not in ("", "0", "false"):
+    BANNED_IMG += [r"googleusercontent\.com/aida", r"gstatic\.com/labs-code"]
 
 
 def _has(html, pats):
