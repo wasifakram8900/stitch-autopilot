@@ -1,0 +1,32 @@
+{
+  "brewhaus-coffee-co|portland-or": {
+    "name": "Brewhaus Coffee Co.",
+    "location": "Portland, OR",
+    "status": "Failed QA \u2014 not deployed",
+    "url": null,
+    "grade": "B",
+    "score": 84.6,
+    "local": null,
+    "ts": "2026-07-02T12:01:28"
+  },
+  "ironpeak-fitness|austin-tx": {
+    "name": "IronPeak Fitness",
+    "location": "Austin, TX",
+    "status": "Done",
+    "url": "https://ironpeak-fitness.netlify.app",
+    "grade": "B",
+    "score": 82.4,
+    "local": "/home/runner/work/stitch-autopilot/stitch-autopilot/out/factory/ironpeak-fitness/index.html",
+    "ts": "2026-07-02T12:05:57"
+  },
+  "brightsmile-dental|miami-fl": {
+    "name": "BrightSmile Dental",
+    "location": "Miami, FL",
+    "status": "Failed QA \u2014 not deployed",
+    "url": null,
+    "grade": "C",
+    "score": 75.8,
+    "local": null,
+    "ts": "2026-07-02T12:25:28"
+  }
+}
